@@ -20,7 +20,8 @@
   aot {:all true}
   pom {:project 'deciduously-com
        :version "0.1.0"}
-  jar  {:file "server.jar"}
+  jar  {:main 'deciduously-com.core
+        :file "server.jar"}
   sift {:include #{#"server.jar"}})
 
 (require '[deciduously-com.web :refer [export port target-dir]]
