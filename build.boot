@@ -42,11 +42,12 @@
 (deftask build
   "Exports the static site and builds a production uberwar for use with jetty-runner"
   []
- (do (export target-dir)
-  (comp
-   (aot)
-   (pom)
-   (uber)
-   (jar)
-   (sift)
-   (target)))
+  (do
+    (export target-dir)
+    (comp
+      (aot)
+      (pom)
+      (uber)
+      (jar)
+      (sift)
+      (target))))
