@@ -41,7 +41,7 @@
   (do (export target-dir) (comp (serve :handler 'deciduously-com.web/prod-handler :port port) (wait))))
 
 (deftask build
-  "Exports the static site and builds a production uberwar for use with jetty-runner"
+  "Exports the static site and builds a production uberjar"
   []
   (do
     (export target-dir)
