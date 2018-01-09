@@ -1,5 +1,5 @@
 # deciduously.com
-[Personal landing page](http://deciduously.com) source code.
+[Personal landing page](deciduously.com) source code.
 ### Usage
 
 Download the latest release and execute the following:
