@@ -3,4 +3,5 @@
 .env
 target/
 dist/
+releases/
 resources/public/pygments-css/
