@@ -61,7 +61,7 @@ echo "--- Scooping litter..."
 rm -rf ${TARGET}
 if [[ -f ${OUTFILE} ]]
   then
-    echo "--- Hot and ready at ${OUTFILE}!\nDrive safe, kids!"
+    echo "--- Hot and ready at ${OUTFILE}! Drive safe, kids!"
   else
     echo "Failed at the only job I have... check build-release_error.log.  I owe
     you dinner sometime!"
