@@ -1,6 +1,6 @@
 #!/usr/bin/env sh
 
-while getopts d:c: option
+while getopts d:c: option # TODO add option to build or not
 do
   case "${option}"
     in
@@ -9,44 +9,60 @@ do
   esac
 done
 
-RESOURCES="resources/"
+STATIC=${DIST:="dist/"}
 SERVER="target/server.jar"
 PKG="deciduously-com"
-VER="0.1.0"
-ATOM="${PKG}-${VER}"
-TARGET="${ATOM}/"
-OUTFILE="${OUTDIR}/${ATOM}.tar.xz"
+VER="0.1.1" # TODO grab PKG and VER automagically
+TARGET="${PKG}-${VER}"
+OUTFILE="${OUTDIR}/${TARGET}"
+ERRORLOG="build-release_error.log"
 
-if [[ ! -f "${SERVER}" ]]
-  then
-    boot build
-  fi
+echo "--- Building deciduously-com..."
 
-if [[ -d "${TARGET}" ]]
+echo "--- Chomping parens..."
+boot build 2>${ERRORLOG}
+
+echo "--- Scrubbing floor..."
+if [[ -d "${TARGET}/" ]]
   then
     rm -rf "${TARGET}"
   fi
-
 mkdir -p "${TARGET}/target"
 
+echo "--- Perusing literature..."
 cp ${SERVER} "${TARGET}/target"
-cp -r ${RESOURCES} ${TARGET}
-cp README.md ${TARGET}
-cp LICENSE ${TARGET}
+cp -r ${STATIC} "${TARGET}/"
+cp README.md "${TARGET}/"
+cp LICENSE "${TARGET}/"
 
-if [[ -d "${TARGET}styles/" ]]
+
+echo "--- Hunting rabbits..." # you should fix your app to not output them at all
+if [[ -d "${TARGET}/styles/" ]]
   then
-    rm -r "${TARGET}styles/"
+    rm -r "${TARGET}/styles/"
   fi
 
+echo "--- Purchasing real estate..."
 if [[ -f ${OUTFILE} ]]
   then
     rm ${OUTFILE}
   fi
 
+echo "--- Cooking dinner..."
 if [[ ${COMPRESS} ]]
   then
-    tar -cf - ${TARGET} | xz -9e -c - > "${OUTFILE}"
+    OUTFILE=${OUTFILE}.tar.xz
+    tar -cf - ${TARGET} | xz -9e -c - > ${OUTFILE}
+  else
+    tar -cf -${TARGET} > ${OUTFILE}
   fi
 
+echo "--- Scooping litter..."
 rm -rf ${TARGET}
+if [[ -f ${OUTFILE} ]]
+  then
+    echo "--- Hot and ready at ${OUTFILE}!\nDrive safe, kids!"
+  else
+    echo "Failed at the only job I have... check build-release_error.log.  I owe
+    you dinner sometime!"
+  fi
