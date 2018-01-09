@@ -70,9 +70,8 @@
       wrap-not-modified
       wrap-gzip))
 
-(defn export []
-  (let [target-dir "dist/"
-        assets (optimizations/all (get-assets) {})]
+(defn export [target-dir]
+  (let [assets (optimizations/all (get-assets) {})]
     (println "Bundling and exporting...")
     (s/empty-directory! target-dir)
     (optimus.export/save-assets assets target-dir)
