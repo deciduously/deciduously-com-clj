@@ -20,8 +20,7 @@
   aot {:all true}
   pom {:project 'deciduously-com
        :version "0.1.0"}
-  jar {:main 'deciduously-com.core
-       :file "server.jar"}
+  jar  {:file "server.jar"}
   sift {:include #{#"server.jar"}})
 
 (require '[deciduously-com.core :refer [port target-dir]]
@@ -42,8 +41,9 @@
   (do (export target-dir) (comp (serve :handler 'deciduously-com.web/prod-handler :port port) (wait))))
 
 (deftask build
-  "Builds a production uberjar"
+  "Exports the static site and builds a production uberwar for use with jetty-runner"
   []
+ (do (export target-dir)
   (comp
    (aot)
    (pom)
