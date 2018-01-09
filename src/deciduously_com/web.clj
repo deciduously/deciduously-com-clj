@@ -68,7 +68,7 @@
       (optimus/wrap get-assets optimizations/none serve-live-assets)))
 
 (def prod-handler
-  (-> (s/serve-pages (get-exported-pages target-dir)
+  (-> (s/serve-pages (get-exported-pages target-dir))
       wrap-content-type
       wrap-not-modified
       wrap-gzip))
