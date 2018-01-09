@@ -19,8 +19,8 @@
 (defn get-assets []
   (assets/load-bundle "public" "styles.css" ["/styles/main.css"]))
 
-(defn get-exported-pages []
-  (s/slurp-directory "dist/" #".+\.(html|js|css)$"))
+(defn get-exported-pages [target-dir]
+  (s/slurp-directory target-dir #".+\.(html|js|css)$"))
 
 (defn layout-page [request page]
   (html5
@@ -65,7 +65,7 @@
       (optimus/wrap get-assets optimizations/none serve-live-assets)))
 
 (def prod-handler
-  (-> (s/serve-pages (get-exported-pages))
+  (-> (s/serve-pages (get-exported-pages (System/getenv "DIST"))
       wrap-content-type
       wrap-not-modified
       wrap-gzip))
