@@ -3,10 +3,10 @@
             [ring.adapter.jetty :refer [run-jetty]])
   (:gen-class))
 
-(def port (Integer/valueOf (or (System/getenv "port") "3000")))
+(def port (Integer/valueOf (or (System/getenv "PORT") "3000")))
 
 (defn -main [& args]
-  (let [mode (System/getenv "build")]
+  (let [mode (System/getenv "BUILD")]
     (if (= mode "prod")
       (do (export) (run-jetty prod-handler {:port port}))
       (run-jetty dev-handler {:port port}))))
