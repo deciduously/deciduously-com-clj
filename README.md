@@ -1,14 +1,22 @@
 # deciduously.com
-[Personal landing page](http://www.deciduously.com) source code.
+[![GithubVersion](https://img.shields.io/badge/version-0.1.2-red.svg?style=flat-square)](https://github.com/deciduously/deciduously-com/tree/v0.1.2)
+[![LatestRelease](https://img.shields.io/badge/release-January%202018-brightgreen.svg?style=flat-square)](https://github.com/deciduously/deciduously-com/tree/release)
+[![Heroku](https://heroku-badge.herokuapp.com/?app=polar-refuge-87230&style=flat)](http://www.deciduously.com)
 ### Usage
 
-Requires a JDK installed, either [Oracle](www.oracle.com/technetwork/java/javase/downloads/index.html") or [OpenJDK](https://openjdk.java.net) to run the binary.  I've only tested with 1.8 and 1.9
-so far.
+Requires a JDK installed, either [Oracle](www.oracle.com/technetwork/java/javase/downloads/index.html") or [OpenJDK](https://openjdk.java.net) to run the binary.  I've only tested with 1.8 and 1.9 so far, CI coming eventually (TM).
 
-Download the latest release and execute the following:
+To download and run the [latest release](https://github.com/deciduously/deciduously-com/releases/tag/v0.1.2) execute the following until I write a script:
 ```shell
-tar xvf deciduously-com-0.1.1.tar.xz
-cd deciduously-0.1.1.tar.xz/
+cd ~ # or you know, where you like downloads
+
+wget https://github.com/deciduously/deciduously-com/releases/download/v0.1.2/deciduously-com-0.1.2.tar.xz
+# or curl, aria2c, your C++ homework from a decade ago, etc
+
+tar xvf deciduously-com-0.1.2.tar.xz
+# if you don't have xz and REALLY don't want to install it, yell at me.
+
+cd deciduously-0.1.2.tar.xz/
 java -jar target/server.jar
 ```
 `server.jar` reads the following environment variables, given with their
@@ -36,8 +44,9 @@ You may also invoke `boot` directly:
 * `boot dev` to start a development server with hot reloading.
 * `boot midje` to run the test suite.
 * `boot prod` to export and serve the static site
+
 ### Libraries
-* [**Clygments**](https://github.com/bfontaine.clygments) - Clojure wrapper for [Pygments](https://p)
+* [**Clygments**](https://github.com/bfontaine.clygments) - Clojure wrapper for [Pygments](https://pygments.org)
 * [**Enlive**](https://github.com/cgrand/enlive) - HTML/XML extraction and transformation
 * [**Hiccup**](https://github.com/weavejester/hiccup) - Represent HTML in Clojure
 * [**markdown-clj**](https://github.com/yogthos/markdown-clj) - Markdown parser
@@ -50,5 +59,3 @@ You may also invoke `boot` directly:
 ### Acknowledgements
 Many thanks to [Christian Johansen's](https://github.com/cjohansen) [tutorial](https://cjohensen.no/building-statis-sites-in-clojure-with-stasis/).
   I use boot instead of lein but otherwise followed this quite closely for the static site component.
-
-
