@@ -1,7 +1,7 @@
 # deciduously.com
-[![GithubVersion](https://img.shields.io/badge/version-0.1.2-red.svg&style=flat-square)]()
-[![LatestRelease](https://img.shields.io/badge/release-January%202018-brightgreen.svg&style=flat-square)]()
-[![Heroku](https://heroku-badge.herokuapp.com/?app=polar-refuge-87230&style=flat)]()
+[![GithubVersion](https://img.shields.io/badge/version-0.1.2-red.svg?style=flat-square)](https://github.com/deciduously/deciduously-com/tree/v0.1.2)
+[![LatestRelease](https://img.shields.io/badge/release-January%202018-brightgreen.svg?style=flat-square)](https://github.com/deciduously/deciduously-com/tree/release)
+[![Heroku](https://heroku-badge.herokuapp.com/?app=polar-refuge-87230&style=flat)](http://www.deciduously.com)
 ### Usage
 
 Requires a JDK installed, either [Oracle](www.oracle.com/technetwork/java/javase/downloads/index.html") or [OpenJDK](https://openjdk.java.net) to run the binary.  I've only tested with 1.8 and 1.9
