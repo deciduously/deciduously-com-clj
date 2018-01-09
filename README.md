@@ -4,12 +4,18 @@
 [![Heroku](https://heroku-badge.herokuapp.com/?app=polar-refuge-87230&style=flat)](http://www.deciduously.com)
 ### Usage
 
-Requires a JDK installed, either [Oracle](www.oracle.com/technetwork/java/javase/downloads/index.html") or [OpenJDK](https://openjdk.java.net) to run the binary.  I've only tested with 1.8 and 1.9
-so far.
+Requires a JDK installed, either [Oracle](www.oracle.com/technetwork/java/javase/downloads/index.html") or [OpenJDK](https://openjdk.java.net) to run the binary.  I've only tested with 1.8 and 1.9 so far, CI coming eventually (TM).
 
-Download the latest release and execute the following:
+To download and run the [latest release](https://github.com/deciduously/deciduously-com/releases/tag/v0.1.2) execute the following until I write a script:
 ```shell
+cd ~ # or you know, where you like downloads
+
+wget https://github.com/deciduously/deciduously-com/releases/download/v0.1.2/deciduously-com-0.1.2.tar.xz
+# or curl, aria2c, your C++ homework from a decade ago, etc
+
 tar xvf deciduously-com-0.1.2.tar.xz
+# if you don't have xz and REALLY don't want to install it, yell at me.
+
 cd deciduously-0.1.2.tar.xz/
 java -jar target/server.jar
 ```
