@@ -6,7 +6,7 @@ Download the latest release and execute the following:
 ```shell
 tar xvf deciduously-com-0.1.0.tar.xz
 cd deciduously-0.1.0.tar.xz/
-java -jar bin/server.jar
+java -jar target/server.jar
 ```
 `server.jar` reads environment variables `PORT` defaulting to 3000 and `BUILD` with no default.
 
@@ -15,13 +15,15 @@ Set `BUILD=prod` to first bundle and export the optimized static site to dist/ a
 
 ### Develop
 
+`git clone https://github.com/deciduously/deciduously-com`
+
 `build-release.sh` requires the target dir to be specified with `-d` and can
 optionally compress the output directory with xz by specifying `-c=true`.  It will build the server on first run.
 
 For example:
 
 `./build-release.sh -d "../releases" -c true`
-#### Tasks Tasks
+#### Tasks
 * `boot build` to build a production uberjar at target/server.jar.
 * `boot dev` to start a development server with hot reloading.
 * `boot midje` to run the test suite.
