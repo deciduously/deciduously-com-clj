@@ -1,0 +1,7 @@
+@import url(ext/colorful.css); /* pygments style - i like autumn, default, emacs, friendly, colorful */
+
+body {
+    font: 14px Helvetica, arial, freesans, clean, sans-serif;
+    line-height: 1.5;
+    margin: 0 10px;
+}
