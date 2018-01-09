@@ -45,6 +45,7 @@
   []
   (do
     (export target-dir)
+    (println "### Compiling jar"
     (comp
       (aot)
       (pom)
