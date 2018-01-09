@@ -16,11 +16,14 @@
             [ring.middleware.reload :refer [wrap-reload]]
             [stasis.core :as s]))
 
+(def port (Integer/valueOf (or (System/getenv "PORT") "3000")))
+(def target-dir (or (System/getenv "DIST") "dist/"))
+
 (defn get-assets []
   (assets/load-bundle "public" "styles.css" ["/styles/main.css"]))
 
-(defn get-exported-pages [target-dir]
-  (s/slurp-directory target-dir #".+\.(html|js|css)$"))
+(defn get-exported-pages [target]
+  (s/slurp-directory target #".+\.(html|js|css)$"))
 
 (defn layout-page [request page]
   (html5
@@ -65,7 +68,7 @@
       (optimus/wrap get-assets optimizations/none serve-live-assets)))
 
 (def prod-handler
-  (-> (s/serve-pages (get-exported-pages (System/getenv "DIST"))
+  (-> (s/serve-pages (get-exported-pages target-dir)
       wrap-content-type
       wrap-not-modified
       wrap-gzip))
