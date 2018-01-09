@@ -7,8 +7,8 @@ so far.
 
 Download the latest release and execute the following:
 ```shell
-tar xvf deciduously-com-0.1.1.tar.xz
-cd deciduously-0.1.1.tar.xz/
+tar xvf deciduously-com-0.1.2.tar.xz
+cd deciduously-0.1.2.tar.xz/
 java -jar target/server.jar
 ```
 `server.jar` reads the following environment variables, given with their
@@ -36,6 +36,7 @@ You may also invoke `boot` directly:
 * `boot dev` to start a development server with hot reloading.
 * `boot midje` to run the test suite.
 * `boot prod` to export and serve the static site
+
 ### Libraries
 * [**Clygments**](https://github.com/bfontaine.clygments) - Clojure wrapper for [Pygments](https://p)
 * [**Enlive**](https://github.com/cgrand/enlive) - HTML/XML extraction and transformation
@@ -50,5 +51,3 @@ You may also invoke `boot` directly:
 ### Acknowledgements
 Many thanks to [Christian Johansen's](https://github.com/cjohansen) [tutorial](https://cjohensen.no/building-statis-sites-in-clojure-with-stasis/).
   I use boot instead of lein but otherwise followed this quite closely for the static site component.
-
-
