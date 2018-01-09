@@ -9,4 +9,4 @@
   (let [mode (System/getenv "BUILD")]
     (if (= mode "prod")
       (do (export) (run-jetty prod-handler {:port port}))
-      (run-jetty dev-handler port))))
+      (run-jetty dev-handler {:port port}))))
