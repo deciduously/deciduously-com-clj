@@ -1,5 +1,7 @@
 # deciduously.com
-[Personal landing page](http://www.deciduously.com) source code.
+[![GithubVersion](https://img.shields.io/badge/version-0.1.2-red.svg&style=flat-square)]()
+[![LatestRelease](https://img.shields.io/badge/release-January%202018-brightgreen.svg&style=flat-square)]()
+[![Heroku](https://heroku-badge.herokuapp.com/?app=polar-refuge-87230&style=flat)]()
 ### Usage
 
 Requires a JDK installed, either [Oracle](www.oracle.com/technetwork/java/javase/downloads/index.html") or [OpenJDK](https://openjdk.java.net) to run the binary.  I've only tested with 1.8 and 1.9
@@ -38,7 +40,7 @@ You may also invoke `boot` directly:
 * `boot prod` to export and serve the static site
 
 ### Libraries
-* [**Clygments**](https://github.com/bfontaine.clygments) - Clojure wrapper for [Pygments](https://p)
+* [**Clygments**](https://github.com/bfontaine.clygments) - Clojure wrapper for [Pygments](https://pygments.org)
 * [**Enlive**](https://github.com/cgrand/enlive) - HTML/XML extraction and transformation
 * [**Hiccup**](https://github.com/weavejester/hiccup) - Represent HTML in Clojure
 * [**markdown-clj**](https://github.com/yogthos/markdown-clj) - Markdown parser
