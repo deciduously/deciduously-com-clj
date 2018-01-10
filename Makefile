@@ -37,13 +37,13 @@ deps: bin/boot
 	cp -r $(DIST) $(project)          &&  \
 	cp $(license) $(project)          &&  \
 	cp $(readme) $(project)           &&  \
-	cp $(server) DIST=dist/ $(project)/target"  &&  \
+	cp $(server) "$(project)/target"  &&  \
 	date > .installed
 
 install: .installed
 
 .released: .installed
-	$(shell export mkdir $(release) && tar -cf - $(project) | xz -9e -c - > "$(release)$(atom)-bundle.bin.tar.xz")
+	$(shell export DIST=dist/ && mkdir $(release) && tar -cf - $(project) | xz -9e -c - > "$(release)$(atom)-bundle.bin.tar.xz")
 	date > .released
 
 release: .released
