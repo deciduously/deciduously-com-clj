@@ -4,7 +4,7 @@
 [![Heroku](https://heroku-badge.herokuapp.com/?app=polar-refuge-87230&style=flat)](http://www.deciduously.com)
 [![GitHub license](https://img.shields.io/github/license/deciduously/deciduously-com.svg?style=flat-square)](https://github.com/deciduously/deciduously-com/blob//LICENSE)
 [![Build Status](https://travis-ci.org/deciduously/deciduously-com.svg?branch=release)](https://travis-ci.org/deciduously/deciduously-com)
-1. [Run](#run) - requires a [JDK](http://www.oracle.com/technetwork/java/javase/downloads/index.html) present
+1. [Run](#run)
 2. [Build](#build) - [requirements](#requirements)
 3. [Libraries](#libraries)
 4. [Acknowledgements](#acknowledgements)
@@ -18,7 +18,7 @@ wget https://github.com/deciduously/deciduously-com/releases/download/v0.1.2-alp
 # If you cannot use xz or any of the build tools, open an issue!
 tar xvf deciduously-com-0.1.2-alpha-bundle.bin.tar.xz
 
-cd deciduously-com/ && java -jar target/server.jar
+cd deciduously-com/ && java -jar target/server.jar # either oracle or openjdk
 ```
 `server.jar` reads the following environment variables, given with their
 defaults:
@@ -28,7 +28,7 @@ DIST=dist/
 ```
 ### Build
 #### Requirements
-* [Oracle JDK](http://www.oracle.com/technetwork/java/javase/downloads/index.html) or 
+* [Oracle JDK](http://www.oracle.com/technetwork/java/javase/downloads/index.html) or [OpenJDK](http://openjdk.java.net/)
 * [bash](https://www.gnu.org/software/bash/)
 * [make](https://www.gnu.org/software/make/)
 * [curl](https://curl.haxx.se/)
@@ -49,7 +49,7 @@ in
 * `boot dev` to start a development server with hot reloading
 * `boot dist` to export the static site
 * `boot prod` to export and serve the static site
-Use `boot midje` to run the test suite, or check
+Use `make test` to run the test suite, or check
 [Travis](travis-ci.org/deciduously/deciduously-com).
 ### Libraries
 * [**Clygments**](https://github.com/bfontaine.clygments) - Clojure wrapper for [Pygments](https://pygments.org)

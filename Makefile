@@ -21,34 +21,34 @@ clean:
 	(rm -fv .boot-chk .installed .tested .released .built .deps)
 
 bin/boot:
-	mkdir -p bin/
-	curl -fsSLo bin/boot https://github.com/boot-clj/boot-bin/releases/download/latest/boot.sh
-	chmod 755 bin/boot
-	date > .boot-chk
+	(mkdir -p bin/)
+	(curl -fsSLo bin/boot https://github.com/boot-clj/boot-bin/releases/download/latest/boot.sh)
+	(chmod 755 bin/boot)
+	(date > .boot-chk)
 
 $(server): bin/boot
-	bin/boot build
-	date > .built
+	(bin/boot build)
+	(date > .built)
 
 deps: bin/boot
 
 .installed: $(server)
-	mkdir -p "$(project)/target"
+	(mkdir -p "$(project)/target")
 	(cp -r $(DIST) $(project))
 	(cp LICENSE $(project) && cp $(readme) $(project) && cp $(server) "$(project)/target")
-	date > .installed
+	(date > .installed)
 
 install: .installed
 
 .released: .installed
-	mkdir -p $(release)
+	(mkdir -p $(release))
 	$(shell tar -cf - $(project) | xz -9e -c - > "$(atom)-bundle.bin.tar.xz")
-	date > .released
+	(date > .released)
 
 release: .released
 
 .tested: bin/boot
 	(export BOOT_VERSION=2.7.2 && bin/boot midje)
-	date > .tested
+	(if [ $$? -eq 0 ] ; then date > .tested ; else exit 2 ; fi)
 
 test: .tested
