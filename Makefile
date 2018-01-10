@@ -11,11 +11,6 @@ release		= release/
 server		= target/server.jar
 readme		= README.md
 license		= LICENSE
-dist 		= $(DIST)
-
-ifndef dist
-$(error DIST is not set)
-endif
 
 help:
 	@echo "version =" $(version)
@@ -39,7 +34,7 @@ deps: bin/boot
 
 .installed: $(server)
 	mkdir -p "$(project)/target"      &&  \
-	cp -r $(dist) $(project)          &&  \
+	cp -r $(DIST) $(project)          &&  \
 	cp $(license) $(project)          &&  \
 	cp $(readme) $(project)           &&  \
 	cp $(server) "$(project)/target"  &&  \
@@ -48,7 +43,7 @@ deps: bin/boot
 install: .installed
 
 .released: .installed
-	$(shell mkdir $(release) && tar -cf - $(project) | xz -9e -c - > "$(release)$(atom)-bundle.bin.tar.xz")
+	$(shell export DIST=dist/ && mkdir $(release) && tar -cf - $(project) | xz -9e -c - > "$(release)$(atom)-bundle.bin.tar.xz")
 	date > .released
 
 release: .released
