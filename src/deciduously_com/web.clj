@@ -35,7 +35,7 @@
     [:meta {:name "viewport"
             :content "width=device-width, initial-scale=1.0"}]
     [:title "deciduously"]
-    [:link {:rel "icon" :href (link/file-path request "/img/favicon.ico")}]java version properties
+    [:link {:rel "icon" :href (link/file-path request "/img/favicon.ico")}]
     (link-to-css-bundles request ["styles.css"])]
    [:body
                                         ;[:div.logo "deciduously.com"]
