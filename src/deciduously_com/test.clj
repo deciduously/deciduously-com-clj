@@ -4,7 +4,7 @@
              [net.cgrand.enlive-html :as enlive]))
 
 (fact "All pages respond with 200 OK"
-      (doseq [url (keys (get-exported-pages))]
+      (doseq [url (keys (get-exported-pages target-dir))]
         (let [status (:status (prod-handler {:uri url}))]
           [url status] => [url 200])))
 
@@ -16,7 +16,7 @@
      (contains? pages (str href "index.html")))))
 
 (fact "All links are valid"
-      (let [pages (get-exported-pages)]
+      (let [pages (get-exported-pages target-dir)]
         (doseq [url (keys pages)
                 link (-> (:body (prod-handler {:uri url}))
                          java.io.StringReader.

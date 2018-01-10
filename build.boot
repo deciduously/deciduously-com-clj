@@ -28,6 +28,7 @@
   sift {:include #{#"server.jar"}})
 
 (require '[deciduously-com.web :refer [export port target-dir version]]
+         '[deciduously-com.test]
          '[pandeiro.boot-http :refer [serve]]
          '[zilti.boot-midje :refer [midje]])
 
