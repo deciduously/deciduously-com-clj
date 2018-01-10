@@ -3,50 +3,50 @@
 SHELL       := /bin/bash
 export PATH := bin:$(PATH)
 
-project				= deciduously-com
-version       = $(shell grep ^version version.properties | sed 's/.*=//')
-verfile       = version.properties
-dist          = $(PWD)/$(DIST)
-server				= target/server.jar
-readme        = README.md
+project		= deciduously-com
+version		= $(shell grep ^version version.properties | sed 's/.*=//')
+verfile		= version.properties
+dist		= $(PWD)/$(DIST)
+server		= target/server.jar
+readme        	= README.md
 
 help:
-				@echo "version =" $(version)
-				@echo "Usage: make {clean|clean-deps|deps|help|install|test}" 1>&2 && false
+		@echo "version =" $(version)
+		@echo "Usage: make {clean|clean-deps|deps|help|install|test}" 1>&2 && false
 
 clean:
-				 (rm -Rfv $(dist) target/)
-				 (rm -fv .installed .tested .released .server)
+	(rm -Rfv $(dist) target/)
+	(rm -fv .installed .tested .released .server)
 
 clean-deps:
-				(rm -Rfv bin)
+		(rm -Rfv bin)
 
 bin/boot:
-				mkdir -p bin
-				curl -fsSLo bin/boot https://github.com/boot-clj/boot-bin/releases/download/latest/boot.sh
-				chmod 755 bin/boot
+	mkdir -p bin
+	curl -fsSLo bin/boot https://github.com/boot-clj/boot-bin/releases/download/latest/boot.sh
+	chmod 755 bin/boot
 
 deps: bin/boot
 
 .server: deps
-				bin/boot build
-				date > .server
+	bin/boot build
+	date > .server
 
 .installed: .server
-				cp $(server) "$(dist)target"
-				cp $(readme) $(dist)
-				date > .installed
+	cp $(server) "$(dist)target"
+	cp $(readme) $(dist)
+	date > .installed
 
 install: .installed
 
-.released: .installed test
-				$(shell tar -cf - $(dist) | xz -9e -c - > "$(dist)/$(project)-$(version).bin.tar.xz")
-				date > .released
+.released: .installed .tested
+	$(shell tar -cf - $(dist) | xz -9e -c - > "$(dist)/$(project)-$(version).bin.tar.xz")
+	date > .released
 
 release: .released
 
 .tested: bin/boot
-				(export BOOT_VERSION=2.7.2 && bin/boot midje)
-				date > .tested
+	(export BOOT_VERSION=2.7.2 && bin/boot midje)
+	date > .tested
 
 test: .tested
