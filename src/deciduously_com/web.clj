@@ -16,13 +16,25 @@
             [ring.middleware.reload :refer [wrap-reload]]
             [stasis.core :as s]))
 
+(def system-env (or (System/getenv %) %2))
+
+(def env
+  (zipmap
+   (map keyword '[build port target-dir])
+   (map system-env {"BUILD" "dev" "PORT" "3000" "DIST" "dist/"})))
+
+(def config (let [[build port target-dir] (keys env)]
+              (if (= "prod" build)
+                {:pages get-exported-pages :handler prod-handler}
+                {:pages get-pages :handler dev-handler}))) ; add this map the the regular old env map if that worked for the grand total
+
 (def port (Integer/valueOf (or (System/getenv "PORT") "3000")))
 (def target-dir (or (System/getenv "DIST") "dist/"))
 
 (defn get-assets []
-  (concat 
-    (assets/load-bundle "public" "styles.css" ["/styles/main.css"])
-    (assets/load-assets "public" ["/img/favicon.ico"])))
+  (concat
+   (assets/load-bundle "public" "styles.css" ["/styles/main.css"])
+   (assets/load-assets "public" ["/img/favicon.ico"])))
 
 (defn get-exported-pages [target]
   (s/slurp-directory target #".+\.(html|js|css)$"))
@@ -37,14 +49,14 @@
     [:link {:rel "icon" :href (link/file-path request "/img/favicon.ico")}]
     (link-to-css-bundles request ["styles.css"])]
    [:body
-    ;[:div.logo "deciduously.com"]
+                                        ;[:div.logo "deciduously.com"]
     [:div.body page [:br] [:br] [:a {:href "/"} "deciduously"]]]))
 
 (defn partial-pages [pages]
   (zipmap (keys pages)
           (map #(fn [req] (layout-page req %)) (vals pages))))
 
-; TODO run edn through hiccup instead of just having raw html
+                                        ; TODO run edn through hiccup instead of just having raw html
 
 (defn markdown-pages [pages]
   (zipmap (map #(str (str/replace % #"\.md$" "") "/") (keys pages))
@@ -75,6 +87,8 @@
       wrap-content-type
       wrap-not-modified
       wrap-gzip))
+
+
 
 (defn export [target-dir]
   (let [assets (optimizations/all (get-assets) {})]
