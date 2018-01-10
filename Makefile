@@ -10,38 +10,46 @@ atom		= "$(project)-$(version)"
 release		= release/
 server		= target/server.jar
 readme		= README.md
+license		= LICENSE
+dist 		= $(DIST)
+
+ifndef dist
+$(error DIST is not set)
+endif
 
 help:
 	@echo "version =" $(version)
 	@echo "Usage: make {clean|deps|help|install|release|test}" 1>&2 && false
 
 clean:
-	(rm -Rfv $(project) $(release) bin/)
-	(rm -fv .boot-chk .installed .tested .released .built .deps)
+	rm -Rfv $(project) $(release) bin/ &&                                   \
+	rm -fv $(server) .boot-chk .installed .tested .released .built .deps
 
 bin/boot:
-	(mkdir -p bin/)
-	(curl -fsSLo bin/boot https://github.com/boot-clj/boot-bin/releases/download/latest/boot.sh)
-	(chmod 755 bin/boot)
-	(date > .boot-chk)
+	mkdir -p bin/ && \
+	curl -fsSLo bin/boot https://github.com/boot-clj/boot-bin/releases/download/latest/boot.sh && \
+	chmod 755 bin/boot && \
+	date > .boot-chk
 
-$(server): bin/boot
+$(server):
 	(export VERSION=$(version) && bin/boot build)
-	(date > .built)
+	date > .built
 
 deps: bin/boot
 
 .installed: $(server)
-	(mkdir -p "$(project)/target")
-	(cp -r $(DIST) $(project))
-	(cp LICENSE $(project) && cp $(readme) $(project) && cp $(server) "$(project)/target")
-	(date > .installed)
+	mkdir -p "$(project)/target"     &&  \
+	cp -r $(DIST) $(project)         &&  \
+	cp $(license) $(project)         &&  \
+	cp $(readme) $(project)          &&  \
+	cp$(server) "$(project)/target"  &&  \
+	date > .installed
 
 install: .installed
 
 .released: .installed
-	(mkdir -p $(release))
-	$(shell tar -cf - $(project) | xz -9e -c - > "$(atom)-bundle.bin.tar.xz")
+	(mkdir -p $(release))                                                     && \
+	$(shell tar -cf - $(project) | xz -9e -c - > "$(atom)-bundle.bin.tar.xz") && \
 	(date > .released)
 
 release: .released

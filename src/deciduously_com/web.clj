@@ -46,7 +46,7 @@
   (zipmap (keys pages)
           (map #(fn [req] (layout-page req %)) (vals pages))))
 
- TODO run edn through hiccup instead of just having raw html
+ ; TODO run edn through hiccup instead of just having raw html
 
 (defn markdown-pages [pages]
   (zipmap (map #(str (str/replace % #"\.md$" "") "/") (keys pages))
