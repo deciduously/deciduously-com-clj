@@ -18,19 +18,23 @@ help:
 
 clean:
 				 (rm -Rfv $(release) bin/)
-				 (rm -fv .installed .tested .released .build)
+				 (rm -fv .installed .tested .released .build .dload)
 
 mkdirs:
 	mkdir -p release/
 
-.dload: mkdir-p bin/
+.dload: mkdir -p bin/
 	curl -fsSLo bin/boot https://github.com/boot-clj/boot-bin/releases/download/latest/boot.sh
 	chmod 755 bin/boot
-	date > .dload
 
 .build:
 				boot build
 				date > .build
+
+.deps: .dload
+	date > .deps
+
+deps: .deps
 
 .installed: .build
 	cp LICENSE $(dist)
