@@ -8,9 +8,9 @@ Requires a JDK installed, either [Oracle](www.oracle.com/technetwork/java/javase
 
 To download and run the [latest release](https://github.com/deciduously/deciduously-com/releases/tag/v0.2.0-alpha) execute the following until I write a script:
 ```shell
-cd ~ # or you know, where you like downloads
-FIX THESE LINKS DOFUS
-wget https://github.com/deciduously/deciduously-com/releases/download/v0.2.0/deciduously-com-0.2.0.tar.xz
+cd ~ # or wherever you like downloads
+
+wget https://github.com/deciduously/deciduously-com/releases/download/v0.2.0-alpha/deciduously-com-0.2.0.tar.xz
 # or curl, aria2c, your C++ homework from a decade ago, etc
 
 tar xvf deciduously-com-0.2.0.tar.xz
