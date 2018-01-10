@@ -17,8 +17,8 @@ help:
     @echo "Usage: make {clean|deps|help|install|release|test}" 1>&2 && false
 
 clean:
-    (rm -Rfv $(project) $(release) bin/                                   && \
-    rm -fv $(server) .boot-chk .installed .tested .released .built .deps)
+    (rm -Rfv $(project) $(release) bin/)
+    (rm -fv $(server) .boot-chk .installed .tested .released .built .deps)
 
 bin/boot:
     (mkdir -p bin/                                                                              && \
@@ -37,7 +37,7 @@ deps: bin/boot
     cp -r $(DIST) $(project)           &&  \
     cp $(license) $(project)           &&  \
     cp $(readme) $(project)            &&  \
-    cp $(server) "$(project)/target"   &&  \
+    cp $(server) "$(project)/target/"   &&  \
     date > .installed)
 
 install: .installed
