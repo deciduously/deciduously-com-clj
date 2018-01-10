@@ -8,4 +8,5 @@ release/
 .build
 .released
 .tested
+.deps
 bin/
