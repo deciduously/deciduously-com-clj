@@ -54,7 +54,7 @@ in
 * `boot dist` to export the static site
 * `boot prod` to export and serve the static site
 Use `boot midje` to run the test suite, or check
-[Travis](https://travis-ci.org/deciduously-com).
+[Travis](travis-ci.org/deciduously/deciduously-com).
 ### Libraries
 * [**Clygments**](https://github.com/bfontaine.clygments) - Clojure wrapper for [Pygments](https://pygments.org)
 * [**Enlive**](https://github.com/cgrand/enlive) - HTML/XML extraction and transformation

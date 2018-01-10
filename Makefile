@@ -24,7 +24,8 @@ clean:
 mkdirs:
 	mkdir -p release
 
-.dload: mkdir -p bin/
+.dload: 
+	mkdir -p bin/
 	curl -fsSLo bin/boot https://github.com/boot-clj/boot-bin/releases/download/latest/boot.sh
 	chmod 755 bin/boot
 
