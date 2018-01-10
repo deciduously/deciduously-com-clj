@@ -35,9 +35,7 @@ deps: bin/boot
 .installed: $(server)
 	mkdir -p "$(project)/target"
 	(cp -r $(DIST) $(project))
-	cp LICENSE $(dist)
-	cp $(readme) $(project)
-	cp $(server) "$(project)/target"
+	(cp LICENSE $(project) && cp $(readme) $(project) && cp $(server) "$(project)/target")
 	date > .installed
 
 install: .installed

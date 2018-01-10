@@ -1,6 +1,6 @@
 # deciduously.com
 ### Contents
-[![GithubVersion](https://img.shields.io/badge/version-0.1.2-red.svg?style=flat-square)](https://github.com/deciduously/deciduously-com/tree/v0.1.2-alpha)
+[![GithubVersion](https://img.shields.io/badge/version-0.1.2-red.svg?style=flat-square&color=brightgreen)](https://github.com/deciduously/deciduously-com/tree/v0.1.2-alpha)
 [![Heroku](https://heroku-badge.herokuapp.com/?app=polar-refuge-87230&style=flat)](http://www.deciduously.com)
 [![GitHub license](https://img.shields.io/github/license/deciduously/deciduously-com.svg?style=flat-square)](https://github.com/deciduously/deciduously-com/blob//LICENSE)
 [![Build Status](https://travis-ci.org/deciduously/deciduously-com.svg?branch=release)](https://travis-ci.org/deciduously/deciduously-com)
