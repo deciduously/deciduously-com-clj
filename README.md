@@ -1,5 +1,6 @@
 # deciduously.com
-[![GithubVersion](https://img.shields.io/badge/version-0.2.0-red.svg?style=flat-square)](https://github.com/deciduously/deciduously-com/tree/v0.3.0-alpha)
+### Contents
+[![GithubVersion](https://img.shields.io/badge/version-0.1.2-red.svg?style=flat-square)](https://github.com/deciduously/deciduously-com/tree/v0.1.2-alpha)
 [![Heroku](https://heroku-badge.herokuapp.com/?app=polar-refuge-87230&style=flat)](http://www.deciduously.com)
 [![GitHub license](https://img.shields.io/github/license/deciduously/deciduously-com.svg?style=flat-square)](https://github.com/deciduously/deciduously-com/blob//LICENSE)
 [![Build Status](https://travis-ci.org/deciduously/deciduously-com.svg?branch=release)](https://travis-ci.org/deciduously/deciduously-com)
@@ -10,18 +11,14 @@
 ### Run
 To download and run the [latest release](https://github.com/deciduously/deciduously-com/releases/tag/v0.1.2-alpha) execute the following:
 ```shell
-cd ~ # or wherever you like downloads
+# or wherever you like downloads
+cd ~
+# curl, aria2c, your C++ homework from a decade ago, soft prayer, etc...
+wget https://github.com/deciduously/deciduously-com/releases/download/v0.1.2-alpha/deciduously-com-0.1.2-alpha-bundle.bin.tar.xz
+# If you cannot use xz or any of the build tools, open an issue!
+tar xvf deciduously-com-0.1.2-alpha-bundle.bin.tar.xz
 
-wget https://github.com/deciduously/deciduously-com/releases/download/v0.1.2-alpha/deciduously-com-0.1.2-alpha.jar.tar.xz
-# or curl, aria2c, your C++ homework from a decade ago, etc
-
-tar xvf deciduously-com-0.1.2-bundle.jar.tar.xz
-# If you don't have xz don't want to install it or the build tools, open an issue!
-# I can provide something else too if it's in demand
-* `boot midje` to run the test suite
-
-cd deciduously-com/
-java -jar target/server.jar
+cd deciduously-com/ && java -jar target/server.jar
 ```
 `server.jar` reads the following environment variables, given with their
 defaults:
@@ -31,8 +28,7 @@ DIST=dist/
 ```
 ### Build
 #### Requirements
-* [JDK](http://www.oracle.com/technetwork/java/javase/downloads/index.html)
-* [boot](https://github.com/boot-clj/boot)
+* [Oracle JDK](http://www.oracle.com/technetwork/java/javase/downloads/index.html) or 
 * [bash](https://www.gnu.org/software/bash/)
 * [make](https://www.gnu.org/software/make/)
 * [curl](https://curl.haxx.se/)

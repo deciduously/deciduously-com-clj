@@ -1,13 +1,15 @@
 .nrepl-*
 .#*
 .env
+*.tar.xz
 target/
 dist/
-release/
+deciduously-com/
 .installed
-.build
+.built
 .released
 .tested
 .dload
 .deps
+.boot-chk
 bin/

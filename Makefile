@@ -5,57 +5,51 @@ export PATH := bin:$(PATH)
 
 boot		= $(shell which boot)
 project		= deciduously-com
-atom="$(project)-$(version)"
-version		= $(shell grep ^version version.properties | sed 's/.*=//')
 verfile		= version.properties
-dist		= $(DIST)
+version		= $(shell grep ^version $(verfile) | sed 's/.*=//')
+atom		="$(project)-$(version)"
 release		= release/
 server		= target/server.jar
 readme		= README.md
 
 help:
-				@echo "version =" $(version)
-				@echo "Usage: make {clean|deps|help|install|release|test}" 1>&2 && false
+	@echo "version =" $(version)
+	@echo "Usage: make {clean|deps|help|install|release|test}" 1>&2 && false
 
 clean:
-				 (rm -Rfv $(release) bin/)
-				 (rm -fv .installed .tested .released .build .dload)
+	(rm -Rfv $(dist) $(release) bin/)
+	(rm -fv .boot-chk .installed .tested .released .built .deps)
 
-mkdirs:
-	mkdir -p release
-
-.dload: 
+bin/boot:
 	mkdir -p bin/
 	curl -fsSLo bin/boot https://github.com/boot-clj/boot-bin/releases/download/latest/boot.sh
 	chmod 755 bin/boot
+	date > .boot-chk
 
-.build: mkdirs
-				$(boot) build
-				date > .build
+$(server): bin/boot
+	bin/boot build
+	date > .built
 
-.deps: .dload
-	date > .deps
+deps: bin/boot
 
-deps: .deps
-
-.installed: .build
+.installed: $(server)
+	mkdir -p "$(project)/target"
+	(cp -r $(DIST) $(project))
 	cp LICENSE $(dist)
-	cp $(readme) $(dist)
+	cp $(readme) $(project)
+	cp $(server) "$(project)/target"
 	date > .installed
 
 install: .installed
 
 .released: .installed
-	(mv  $(dist) $(release)
-	(cp $(server) $(release)target/ && \
-	mv $(release) $(project))
-	$(shell tar -cf - $(project) | xz -9e -c - > "$(release)$(atom)-bundle.bin.tar.xz")
-	rm -rf $(project)
+	mkdir -p $(release)
+	$(shell tar -cf - $(project) | xz -9e -c - > "$(atom)-bundle.bin.tar.xz")
 	date > .released
 
 release: .released
 
-.tested: .deps
+.tested: bin/boot
 	(export BOOT_VERSION=2.7.2 && bin/boot midje)
 	date > .tested
 
