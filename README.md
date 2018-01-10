@@ -38,9 +38,7 @@ DIST=dist/
 #### Bundle
 ```shell
 git clone https://github.com/deciduously/deciduously-com
-cd deciduously-com/
-make deps
-make release
+cd deciduously-com/ && make release
 ```
 This takes about four minutes to run - go put on a nice hot cup of your
 favorite kind of tea.  The resulting
