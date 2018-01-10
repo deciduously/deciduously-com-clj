@@ -7,7 +7,7 @@ boot		= $(shell which boot)
 project		= deciduously-com
 verfile		= version.properties
 version		= $(shell grep ^version $(verfile) | sed 's/.*=//')
-atom		="$(project)-$(version)"
+atom		= "$(project)-$(version)"
 release		= release/
 server		= target/server.jar
 readme		= README.md
@@ -17,7 +17,7 @@ help:
 	@echo "Usage: make {clean|deps|help|install|release|test}" 1>&2 && false
 
 clean:
-	(rm -Rfv $(dist) $(release) bin/)
+	(rm -Rfv $(project) $(release) bin/)
 	(rm -fv .boot-chk .installed .tested .released .built .deps)
 
 bin/boot:
@@ -49,6 +49,5 @@ release: .released
 
 .tested: bin/boot
 	(export BOOT_VERSION=2.7.2 && bin/boot midje)
-	(if [ $$? -eq 0 ] ; then date > .tested ; else exit 2 ; fi)
 
 test: .tested
