@@ -38,11 +38,12 @@ DIST=dist/
 #### Bundle
 ```shell
 git clone https://github.com/deciduously/deciduously-com
-cd deciduously-com/ && make release
+cd deciduously-com/ && make install
 ```
-This takes about four minutes to run - go put on a nice hot cup of your
+This takes about four minutes to run, longer the first time as boot gathers
+dependencies - go put on a nice hot cup of your
 favorite kind of tea.  The resulting
-folder or archive can then be used as described in Usage.  Run `make help` for a list of all available make targets.
+folder can then be used as described in Usage. `make release` will produce a compressed archive at release/.  Run `make help` for a list of all available make targets.
 #### Hack
 You may also invoke `boot` directly:
 * `boot build` to export the static site and build a production uberjar at target/server.jar.

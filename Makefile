@@ -42,7 +42,7 @@ install: .installed
 
 .released: .installed test
 				mkdir -p release/
-				$(shell tar -cf - $(dist) | xz -9e -c - > "$(release)/$(project)-$(version).bin.tar.xz")
+				$(shell tar -cf - $(dist) | xz -9e -c - > "$(release)$(project)-$(version).bin.tar.xz")
 				date > .released
 
 release: .released
