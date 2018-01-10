@@ -31,7 +31,7 @@
          '[pandeiro.boot-http :refer [serve]]
          '[zilti.boot-midje :refer [midje]])
 
-(def version (or (System/getenv "version") "0.2.0-alpha-r1"))
+(def version (or (System/getenv "version") "0.1.2-alpha"))
 
 (deftask dev
   "Run live development server"
