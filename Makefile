@@ -3,6 +3,7 @@
 SHELL       := /bin/bash
 export PATH := bin:$(PATH)
 
+project				= deciduously-com
 version       = $(shell grep ^version version.properties | sed 's/.*=//')
 verfile       = version.properties
 dist          = $(PWD)/$(DIST)
@@ -26,16 +27,16 @@ bin/boot: mkdirs
 
 deps: bin/boot
 
-$(server): $(verfile) bin/boot build
+pom.xml: $(shell bin/boot pom)
+
+$(server): pom.xml
+					bin/boot build
 
 .installed: mkdirs $(server)
 				cp $(server) $(dist)
 				date > .installed
 
-.released: .installed
-				mkdir -p dist
-
-release: .released
+install: .installed
 
 .tested: bin/boot
 				(export BOOT_VERSION=2.7.2 && bin/boot midje)

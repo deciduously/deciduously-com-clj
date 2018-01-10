@@ -18,8 +18,7 @@
 
 (task-options!
   aot {:namespace #{'deciduously-com.core}}
-  pom {:project 'deciduously-com
-       :version (System/getenv "version")}
+  pom {:project 'deciduously-com}
   jar  {:main 'deciduously-com.core
         :file "server.jar"}
   sift {:include #{#"server.jar"}})
@@ -27,6 +26,8 @@
 (require '[deciduously-com.web :refer [export port target-dir]]
          '[pandeiro.boot-http :refer [serve]]
          '[zilti.boot-midje :refer [midje]])
+
+(def version (or (System/getenv "version") "0.2.0-alpha-r1"))
 
 (deftask dev
   "Run live development server"
@@ -53,7 +54,7 @@
     (println "***** Compiling jar")
     (comp
       (aot)
-      (pom)
+      (pom :version version)
       (uber)
       (jar)
       (sift)
