@@ -9,4 +9,5 @@ release/
 .released
 .tested
 .dload
+.deps
 bin/
