@@ -3,4 +3,9 @@
 .env
 target/
 dist/
-release
+release/
+.installed
+.build
+.released
+.tested
+bin/
