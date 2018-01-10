@@ -6,8 +6,8 @@ export PATH := bin:$(PATH)
 project		= deciduously-com
 version		= $(shell grep ^version version.properties | sed 's/.*=//')
 verfile		= version.properties
-dist		= $(PWD)/$(DIST)
-release		= $(PWD)/release/
+dist		= $(DIST)
+release		= release/
 server		= target/server.jar
 readme		= README.md
 
@@ -38,7 +38,8 @@ deps: bin/boot
 install: .installed
 
 .released: .installed .tested
-	$(shell tar -cf - $(dist) | xz -9e -c - > "$(dist)/$(project)-$(version).bin.tar.xz")
+	mkdir -p $(release)
+	$(shell tar -cf - $(dist) | xz -9e -c - > "$(release)$(project)-$(version).bin.tar.xz")
 	date > .released
 
 release: .released
