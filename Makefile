@@ -3,6 +3,7 @@
 SHELL       := /bin/bash
 export PATH := bin:$(PATH)
 
+boot		= $(shell which boot)
 project		= deciduously-com
 version		= $(shell grep ^version version.properties | sed 's/.*=//')
 verfile		= version.properties
@@ -20,17 +21,16 @@ clean:
 				 (rm -fv .installed .tested .released .server)
 
 bin/boot:
-	#mkdir -p bin
-	#curl -fsSLo bin/boot https://github.com/boot-clj/boot-bin/releases/download/latest/boot.sh
-	#chmod 755 bin/boot
+	mkdir -p bin
+	curl -fsSLo bin/boot https://github.com/boot-clj/boot-bin/releases/download/latest/boot.sh
+	chmod 755 bin/boot
 
 deps: bin/boot
 
-.server: bin/boot
-				boot build # use system boot!
-				date > .server
+$(server):
+				$(boot) build
 
-.installed: .server
+.installed: $(server)
 	cp $(server) "$(dist)target"
 	cp $(readme) $(dist)
 	date > .installed
@@ -44,8 +44,8 @@ install: .installed
 
 release: .released
 
-.tested: bin/boot
-	(export BOOT_VERSION=2.7.2 && bin/boot midje -l 2)
+.tested:
+	(export BOOT_VERSION=2.7.2 && $(boot) midje -l 2)
 	date > .tested
 
 test: .tested
