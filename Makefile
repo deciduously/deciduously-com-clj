@@ -15,6 +15,7 @@ help:
 				@echo "Usage: make {clean|clean-deps|deps|help|install|test}" 1>&2 && false
 
 clean:
+				 (rm -Rfv $(dist) target/)
 				 (rm -fv .installed .tested .released .server)
 
 clean-deps:
@@ -39,7 +40,7 @@ deps: bin/boot
 install: .installed
 
 .released: .installed test
-				$(shell tar -cf - $(dist) | xz -9e -c - > "$(project)-$(version).bin.tar.xz")
+				$(shell tar -cf - $(dist) | xz -9e -c - > "$(dist)/$(project)-$(version).bin.tar.xz")
 				date > .released
 
 release: .released
