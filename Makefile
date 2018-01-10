@@ -3,19 +3,20 @@
 SHELL       := /bin/bash
 export PATH := bin:$(PATH)
 
-project				= deciduously-com
-version       = $(shell grep ^version version.properties | sed 's/.*=//')
-verfile       = version.properties
-dist          = $(PWD)/$(DIST)
-server				= target/server.jar
-readme        = README.md
+project		= deciduously-com
+version		= $(shell grep ^version version.properties | sed 's/.*=//')
+verfile		= version.properties
+dist		= $(PWD)/$(DIST)
+release		= $(PWD)/release/
+server		= target/server.jar
+readme		= README.md
 
 help:
 				@echo "version =" $(version)
 				@echo "Usage: make {clean|clean-deps|deps|help|install|test}" 1>&2 && false
 
 clean:
-				 (rm -Rfv $(dist) target/)
+				 (rm -Rfv release/)
 				 (rm -fv .installed .tested .released .server)
 
 clean-deps:
@@ -40,7 +41,8 @@ deps: bin/boot
 install: .installed
 
 .released: .installed test
-				$(shell tar -cf - $(dist) | xz -9e -c - > "$(dist)/$(project)-$(version).bin.tar.xz")
+				mkdir -p release/
+				$(shell tar -cf - $(dist) | xz -9e -c - > "$(release)/$(project)-$(version).bin.tar.xz")
 				date > .released
 
 release: .released

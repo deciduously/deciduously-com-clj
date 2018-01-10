@@ -3,5 +3,4 @@
 .env
 target/
 dist/
-*.log
-*.xz
+release
