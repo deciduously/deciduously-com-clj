@@ -18,7 +18,11 @@
 
 (task-options!
   aot {:namespace #{'deciduously-com.core}}
-  pom {:project 'deciduously-com}
+  pom {:project 'deciduously-com
+       :description "Personal blog"
+       :url "http://www.deciduously.com"
+       :license {"MIT" "https://github.com/deciduously/deciduously-com/blob/release/LICENSE"}
+       :developers {"deciduously" "dev@deciduously.com"}}
   jar  {:main 'deciduously-com.core
         :file "server.jar"}
   sift {:include #{#"server.jar"}})
