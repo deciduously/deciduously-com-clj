@@ -2,8 +2,9 @@
 [![GithubVersion](https://img.shields.io/badge/version-0.2.0-red.svg?style=flat-square)](https://github.com/deciduously/deciduously-com/tree/v0.2.0-alpha-r1)
 [![Heroku](https://heroku-badge.herokuapp.com/?app=polar-refuge-87230&style=flat)](http://www.deciduously.com)
 [![license](https://img.shields.io/github/license/mashape/apistatus.svg?style=flat-square)]()
-[![GitHub last commit (release)](https://img.shields.io/github/last-commit/google/skia/infra/config.svg?style=flat-square)]()
-[![GitHub code size in bytes](https://img.shields.io/github/languages/code-size/badges/shields.svg?style=flat-square)]()
+[![Build Status](https://travis-ci.org/deciduously/deciduously-com.svg?branch=release)](https://travis-ci.org/deciduously/deciduously-com)
+[![GitHub last commit (release)](https://img.shields.io/github/last-commit/google/skia/infra/config.svg?style=flat-square)](https://github.com/deciduously/deciduously-com.git)
+[![GitHub code size in bytes](https://img.shields.io/github/languages/code-size/badges/shields.svg?style=flat-square)](htt[s://github.com/deciduously/deciduously-com.git)
 1. [Run](#run) - requires a [JDK](http://www.oracle.com/technetwork/java/javase/downloads/index.html) present
 2. [Build](#build) - [requirements](#requirements)
 3. [Libraries](#libraries)
