@@ -18,7 +18,7 @@
 (fact "All links are valid"
       (let [pages (get-pages)]
         (doseq [url (keys pages)
-                link (-> (:body (dev-handler {:uri url}))
+                link (-> (:body (prod-handler {:uri url}))
                          java.io.StringReader.
                          enlive/html-resource
                          (enlive/select [:a]))]
