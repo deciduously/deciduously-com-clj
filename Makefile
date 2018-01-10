@@ -1,4 +1,4 @@
-.PHONY: clean clean-deps deps help install release test
+.PHONY: help clean deps install release test
 
 SHELL       := /bin/bash
 export PATH := bin:$(PATH)
@@ -13,14 +13,11 @@ readme		= README.md
 
 help:
 				@echo "version =" $(version)
-				@echo "Usage: make {clean|clean-deps|deps|help|install|test}" 1>&2 && false
+				@echo "Usage: make {clean|deps|help|install|release|test}" 1>&2 && false
 
 clean:
-				 (rm -Rfv release/)
+				 (rm -Rfv $(release) bin/)
 				 (rm -fv .installed .tested .released .server)
-
-clean-deps:
-				(rm -Rfv bin)
 
 bin/boot:
 				mkdir -p bin
@@ -29,7 +26,7 @@ bin/boot:
 
 deps: bin/boot
 
-.server: deps
+.server: bin/boot
 				bin/boot build
 				date > .server
 
