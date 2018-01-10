@@ -16,9 +16,12 @@
             [ring.middleware.reload :refer [wrap-reload]]
             [stasis.core :as s]))
 
-(def port (Integer/valueOf (or (System/getenv "PORT") "3000")))
-(def version (or (System/getenv "VERSION") "9999"))
-(def target-dir (or (System/getenv "DIST") "dist/"))
+(def system-env #(or (System/getenv %) %2))
+
+(def port (Integer/valueOf (system-env "PORT" "3000")))
+(def version (system-env "VERSION" "9999"))
+(def target-dir (system-env "DIST" "dist/"))
+(def build (system-env "BUILD" "dev"))
 
 (defn get-assets []
   (concat

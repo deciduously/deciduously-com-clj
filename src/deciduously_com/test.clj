@@ -4,10 +4,12 @@
              [net.cgrand.enlive-html :as enlive]))
 
 (def prod? (= "prod" build))
+(def pages (if prod? (get-exported-pages target-dir) (get-pages)))
+(def handler (if prod? prod-handler dev-handler))
 
 (fact "All pages respond with 200 OK"
-      (doseq [url (keys (get-exported-pages target-dir))]
-        (let [status (:status (prod-handler {:uri url}))]
+      (doseq [url (keys pages)]
+        (let [status (:status (handler {:uri url}))]
           [url status] => [url 200])))
 
 (defn link-valid? [pages link]
@@ -18,14 +20,13 @@
      (contains? pages (str href "index.html")))))
 
 (fact "All links are valid"
-      (let [pages (get-exported-pages target-dir)]
         (doseq [url (keys pages)
-                link (-> (:body (prod-handler {:uri url}))
+                link (-> (:body (handler {:uri url}))
                          java.io.StringReader.
                          enlive/html-resource
                          (enlive/select [:a]))]
           (let [href (get-in link [:attrs :href])]
-            [url href (link-valid? pages link)] => [url href true]))))
+            [url href (link-valid? pages link)] => [url href true])))
 
 
 ;(fact "File structure fo ot what we expect"

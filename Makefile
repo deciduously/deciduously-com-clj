@@ -43,17 +43,12 @@ deps: bin/boot
 install: .installed
 
 .released: .installed
-<<<<<<< Updated upstream
-	$(shell export DIST=dist/ && mkdir $(release) && tar -cf - $(project) | xz -9e -c - > "$(release)$(atom)-bundle.bin.tar.xz")
-	date > .released
-=======
 	($(shell mkdir $(release) && tar -cf - $(project) | xz -9e -c - > "$(release)$(atom)-bundle.bin.tar.xz") && \
 	date > .released)
->>>>>>> Stashed changes
 
 release: .released
 
-.tested: bin/boot
+.tested: .installed
 	(export BOOT_VERSION=2.7.2 && bin/boot midje)
 
 test: .tested
