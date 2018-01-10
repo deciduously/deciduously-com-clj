@@ -22,8 +22,8 @@ clean:
 
 bin/boot:
 	(mkdir -p bin/                                                                              && \
-	curl -fsSLo bin/boot https://github.com/boot-clj/boot-bin/releases/download/latest/boot.sh && \
-	chmod 755 bin/boot                                                                         && \
+	curl -fsSLo bin/boot https://github.com/boot-clj/boot-bin/releases/download/latest/boot.sh  && \
+	chmod 755 bin/boot                                                                          && \
 	date > .boot-chk)
 
 $(server): bin/boot
@@ -34,11 +34,11 @@ $(server): bin/boot
 deps: bin/boot
 
 .installed: $(server)
-	mkdir -p "$(project)/target"      &&  \
-	(cp -r $(DIST) $(project)/)           &&  \
-	(cp $(license) $(project)           &&  \
+	mkdir -p "$(project)/target"       &&  \
+	cp -r $(DIST) "$(project)/"        &&  \
+	cp $(license) $(project)           &&  \
 	cp $(readme) $(project)            &&  \
-	cp $(server) "$(project)/target/")   &&  \
+	cp $(server) "$(project)/target/"  &&  \
 	date > .installed
 
 install: .installed
