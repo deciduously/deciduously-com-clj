@@ -6,7 +6,7 @@ export PATH := bin:$(PATH)
 project		= deciduously-com
 verfile		= version.properties
 version		= $(shell grep ^version $(verfile) | sed 's/.*=//')
-atom			= "$(project)-$(version)"
+atom		= "$(project)-$(version)"
 release		= release/
 server		= target/server.jar
 readme		= README.md
