@@ -20,15 +20,17 @@ clean:
 				 (rm -Rfv $(release) bin/)
 				 (rm -fv .installed .tested .released .build)
 
-bin/boot:
-	mkdir -p b
+mkdirs:
+	mkdir -p bin/ release/
+
+bin/boot: mkdirs
 	curl -fsSLo bin/boot https://github.com/boot-clj/boot-bin/releases/download/latest/boot.sh
 	chmod 755 bin/boot
 
 deps: bin/boot
 
-.build:
-				$(boot) build
+.build: bin/boot
+				bin/boot build
 				cp $(server) $(dist)
 				date > .build
 
@@ -40,14 +42,13 @@ deps: bin/boot
 install: .installed
 
 .released: .tested .installed
-	mkdir -p $(release)
-	$(shell tar -cf - $(dist) | xz -9e -c - > "$(PWD)/$(release)$(project)-$(version)-jar.tar.xz")
+	$(shell tar -cf - $(dist) | xz -9e -c - > "$(release)$(project)-$(version).jar.tar.xz")
 	date > .released
 
 release: .released
 
-.tested:
-	(export BOOT_VERSION=2.7.2 && $(boot) midje -l 2)
+.tested: bin/boot
+	(export BOOT_VERSION=2.7.2 && bin/boot midje)
 	date > .tested
 
 test: .tested
