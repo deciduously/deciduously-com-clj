@@ -1,4 +1,4 @@
-.PHONY: clean clean-deps deps help install test
+.PHONY: clean clean-deps deps help install release test
 
 SHELL       := /bin/bash
 export PATH := bin:$(PATH)
@@ -15,7 +15,7 @@ help:
 				@echo "Usage: make {clean|clean-deps|deps|help|install|test}" 1>&2 && false
 
 clean:
-				 (rm -fv .installed .tested .released .pom .server)
+				 (rm -fv .installed .tested .released .server)
 
 clean-deps:
 				(rm -Rfv bin)
@@ -27,10 +27,7 @@ bin/boot:
 
 deps: bin/boot
 
-.pom :  bin/boot pom -v $(version)
-				date > .pom
-
-.server: .pom
+.server: deps
 				bin/boot build
 				date > .server
 
@@ -41,9 +38,9 @@ deps: bin/boot
 
 install: .installed
 
-.released: .installed .tested
+.released: .installed test
 				$(shell tar -cf - $(dist) | xz -9e -c - > "$(project)-$(version).bin.tar.xz")
-				.released
+				date > .released
 
 release: .released
 
