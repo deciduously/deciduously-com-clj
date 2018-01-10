@@ -11,11 +11,6 @@ release		= release/
 server		= target/server.jar
 readme		= README.md
 license		= LICENSE
-dist 		= $(DIST)
-
-ifndef dist
-$(error DIST is not set)
-endif
 
 help:
 	@echo "version =" $(version)
@@ -39,7 +34,7 @@ deps: bin/boot
 
 .installed: $(server)
 	mkdir -p "$(project)/target"      &&  \
-	cp -r $(dist) $(project)          &&  \
+	cp -r $(DIST) $(project)          &&  \
 	cp $(license) $(project)          &&  \
 	cp $(readme) $(project)           &&  \
 	cp $(server) "$(project)/target"  &&  \
