@@ -18,28 +18,30 @@ help:
 
 clean:
 				 (rm -Rfv $(release) bin/)
-				 (rm -fv .installed .tested .released .server)
+				 (rm -fv .installed .tested .released .build)
 
 bin/boot:
-	mkdir -p bin
+	mkdir -p b
 	curl -fsSLo bin/boot https://github.com/boot-clj/boot-bin/releases/download/latest/boot.sh
 	chmod 755 bin/boot
 
 deps: bin/boot
 
-$(server):
+.build:
 				$(boot) build
+				cp $(server) $(dist)
+				date > .build
 
-.installed: $(server)
-	cp $(server) "$(dist)target"
+.installed: .build
+	cp LICENSE $(dist)
 	cp $(readme) $(dist)
 	date > .installed
 
 install: .installed
 
-.released: .installed .tested
+.released: .tested .installed
 	mkdir -p $(release)
-	$(shell tar -cf - $(dist) | xz -9e -c - > "$(release)$(project)-$(version).bin.tar.xz")
+	$(shell tar -cf - $(dist) | xz -9e -c - > "$(PWD)/$(release)$(project)-$(version)-jar.tar.xz")
 	date > .released
 
 release: .released
