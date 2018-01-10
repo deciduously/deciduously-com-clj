@@ -8,15 +8,14 @@
 3. [Libraries](#libraries)
 4. [Acknowledgements](#acknowledgements)
 ### Run
-#### Requirements
 To download and run the [latest release](https://github.com/deciduously/deciduously-com/releases/tag/v0.1.2-alpha) execute the following:
 ```shell
 cd ~ # or wherever you like downloads
 
-wget https://github.com/deciduously/deciduously-com/releases/download/v0.3.0-alpha/deciduously-com-0.1.2-alpha.jar.tar.xz
+wget https://github.com/deciduously/deciduously-com/releases/download/v0.1.2-alpha/deciduously-com-0.1.2-alpha.jar.tar.xz
 # or curl, aria2c, your C++ homework from a decade ago, etc
 
-tar xvf deciduously-com-0.1.2-alpha.jar.tar.xz
+tar xvf deciduously-com-0.1.2-bundle.jar.tar.xz
 # If you don't have xz don't want to install it or the build tools, open an issue!
 # I can provide something else too if it's in demand
 * `boot midje` to run the test suite
@@ -45,7 +44,7 @@ cd deciduously-com/ && make install
 This takes about four minutes to run, longer the first time as boot gathers
 dependencies - go put on a nice hot cup of your
 favorite kind of tea.  The resulting
-folder can then be used as described in Usage at `dist/`. `make release` will produce a compressed archive at release/.  Run `make help` for a list of all available make targets.
+folder can then be used as described in Usage at `dist/`. `make release` will produce a compressed archive at `release/deciduously-com-0.1.2-alpha-bundle.tar.xz`.  Run `make help` for a list of all available make targets.
 #### Hack
 Invoke `boot -h` for the full list of available tasks.  I provide the following
 in

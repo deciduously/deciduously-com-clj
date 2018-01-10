@@ -45,11 +45,11 @@ deps: .deps
 install: .installed
 
 .released: .installed
-	(mv  $(dist) $(release) && \
-	cp $(server) $(release)target/server.jar && \
-	mv $(release) $(atom))
-	$(shell tar -cf - $(atom) | xz -9e -c - > $(atom)/$(atom).jar.tar.xz)
-	rm -rf $(atom)
+	(mv  $(dist) $(release)
+	(cp $(server) $(release)target/ && \
+	mv $(release) $(project))
+	$(shell tar -cf - $(project) | xz -9e -c - > "$(release)$(atom)-bundle.bin.tar.xz")
+	rm -rf $(project)
 	date > .released
 
 release: .released
