@@ -35,7 +35,7 @@ deps: bin/boot
 
 .installed: $(server)
 	mkdir -p "$(project)/target"       &&  \
-	cp -r $(DIST) "$(project)/"        &&  \
+	(cp -r $(DIST) $(project))        &&  \
 	cp $(license) $(project)           &&  \
 	cp $(readme) $(project)            &&  \
 	cp $(server) "$(project)/target/"  &&  \
@@ -49,7 +49,7 @@ install: .installed
 
 release: .released
 
-.tested: $(server)
+.tested: bin/boot
 	(export BOOT_VERSION=2.7.2 && bin/boot midje)
 
 test: .tested
