@@ -1,11 +1,10 @@
 #!/usr/bin/env sh
 
-while getopts d:c: option # TODO add option to build or not
+while getopts d: option # TODO add option to build or not
 do
   case "${option}"
     in
     d) OUTDIR=${OPTARG};;
-    c) COMPRESS=${OPTARG};;
   esac
 done
 
@@ -14,7 +13,7 @@ SERVER="target/server.jar"
 PKG="deciduously-com"
 VER="0.1.2" # TODO grab PKG and VER automagically
 TARGET="${PKG}-${VER}"
-OUTFILE="${OUTDIR}/${TARGET}"
+OUTFILE="${OUTDIR}/${TARGET}.tar.xz"
 ERRORLOG="build-release_error.log"
 
 echo "--- Building deciduously-com..."
@@ -35,7 +34,6 @@ cp -r ${STATIC} "${TARGET}/"
 cp README.md "${TARGET}/"
 cp LICENSE "${TARGET}/"
 
-
 echo "--- Hunting rabbits..." # you should fix your app to not output them at all
 if [[ -d "${TARGET}/styles/" ]]
   then
@@ -49,19 +47,13 @@ if [[ -f ${OUTFILE} ]]
   fi
 
 echo "--- Cooking dinner..."
-if [[ ${COMPRESS} ]]
-  then
-    OUTFILE=${OUTFILE}.tar.xz
-    tar -cf - ${TARGET} | xz -9e -c - > ${OUTFILE}
-  else
-    tar -cf -${TARGET} > ${OUTFILE}
-  fi
+tar -cf - ${TARGET} | xz -9e -c - > ${OUTFILE} 2>${ERRORLOG}
 
 echo "--- Scooping litter..."
 rm -rf ${TARGET}
 if [[ -f ${OUTFILE} ]]
   then
-    echo "--- Hot and ready at ${OUTFILE}!\nDrive safe, kids!"
+    echo "--- Hot and ready at ${OUTFILE}"
   else
     echo "Failed at the only job I have... check build-release_error.log.  I owe
     you dinner sometime!"
