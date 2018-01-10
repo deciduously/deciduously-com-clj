@@ -1,7 +1,15 @@
 .nrepl-*
 .#*
 .env
+*.tar.xz
 target/
 dist/
-newrelic/
-*.log
+deciduously-com/
+.installed
+.built
+.released
+.tested
+.dload
+.deps
+.boot-chk
+bin/

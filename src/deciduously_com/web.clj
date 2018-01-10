@@ -20,7 +20,9 @@
 (def target-dir (or (System/getenv "DIST") "dist/"))
 
 (defn get-assets []
-  (assets/load-bundle "public" "styles.css" ["/styles/main.css"]))
+  (concat 
+    (assets/load-bundle "public" "styles.css" ["/styles/main.css"])
+    (assets/load-assets "public" ["/img/favicon.ico"])))
 
 (defn get-exported-pages [target]
   (s/slurp-directory target #".+\.(html|js|css)$"))
@@ -32,6 +34,7 @@
     [:meta {:name "viewport"
             :content "width=device-width, initial-scale=1.0"}]
     [:title "deciduously"]
+    [:link {:rel "icon" :href (link/file-path request "/img/favicon.ico")}]
     (link-to-css-bundles request ["styles.css"])]
    [:body
     ;[:div.logo "deciduously.com"]
