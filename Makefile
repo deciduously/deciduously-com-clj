@@ -3,7 +3,6 @@
 SHELL       := /bin/bash
 export PATH := bin:$(PATH)
 
-boot		= $(shell which boot)
 project		= deciduously-com
 verfile		= version.properties
 version		= $(shell grep ^version $(verfile) | sed 's/.*=//')
