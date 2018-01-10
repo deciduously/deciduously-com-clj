@@ -69,6 +69,7 @@ Use `make test` to run the test suite, or check
 * Write a blog post :)
 * Prettier layout
 * Add Compojure?  Maybe?
+* Add the license better
 ### Acknowledgements
 Many thanks to [Christian Johansen's](https://github.com/cjohansen) [tutorial](https://cjohensen.no/building-statis-sites-in-clojure-with-stasis/).
   I use boot instead of lein but otherwise followed this quite closely for the static site component.
