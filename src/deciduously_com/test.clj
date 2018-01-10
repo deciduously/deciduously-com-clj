@@ -3,6 +3,8 @@
              [midje.sweet :refer :all]
              [net.cgrand.enlive-html :as enlive]))
 
+(def prod? (= "prod" build))
+
 (fact "All pages respond with 200 OK"
       (doseq [url (keys (get-exported-pages target-dir))]
         (let [status (:status (prod-handler {:uri url}))]
