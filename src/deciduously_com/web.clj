@@ -38,7 +38,6 @@
     [:link {:rel "icon" :href (link/file-path request "/img/favicon.ico")}]
     (link-to-css-bundles request ["styles.css"])]
    [:body
-                                        ;[:div.logo "deciduously.com"]
     [:div.body page
      [:footer.footer "Copyright 2018 Herb Stratum." [:br]
       [:a {:href (str "https://github.com/releases/tag/" version)} version]]]]))
@@ -47,7 +46,7 @@
   (zipmap (keys pages)
           (map #(fn [req] (layout-page req %)) (vals pages))))
 
-                                        ; TODO run edn through hiccup instead of just having raw html
+ TODO run edn through hiccup instead of just having raw html
 
 (defn markdown-pages [pages]
   (zipmap (map #(str (str/replace % #"\.md$" "") "/") (keys pages))
