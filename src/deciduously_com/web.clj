@@ -75,7 +75,6 @@
 
 (defn export [target-dir]
   (let [assets (optimizations/all (get-assets) {})]
-    
     (s/empty-directory! target-dir)
     (optimus.export/save-assets assets target-dir)
     (s/export-pages (get-pages) target-dir {:optimus-assets assets})))

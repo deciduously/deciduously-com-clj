@@ -1,22 +1,22 @@
 # deciduously.com
-[![GithubVersion](https://img.shields.io/badge/version-0.1.2-red.svg?style=flat-square)](https://github.com/deciduously/deciduously-com/tree/v0.1.2)
+[![GithubVersion](https://img.shields.io/badge/version-0.2.0-red.svg?style=flat-square)](https://github.com/deciduously/deciduously-com/tree/v0.2.0)
 [![LatestRelease](https://img.shields.io/badge/release-January%202018-brightgreen.svg?style=flat-square)](https://github.com/deciduously/deciduously-com/tree/release)
 [![Heroku](https://heroku-badge.herokuapp.com/?app=polar-refuge-87230&style=flat)](http://www.deciduously.com)
 ### Usage
 
 Requires a JDK installed, either [Oracle](www.oracle.com/technetwork/java/javase/downloads/index.html") or [OpenJDK](https://openjdk.java.net) to run the binary.  I've only tested with 1.8 and 1.9 so far, CI coming eventually (TM).
 
-To download and run the [latest release](https://github.com/deciduously/deciduously-com/releases/tag/v0.1.2) execute the following until I write a script:
+To download and run the [latest release](https://github.com/deciduously/deciduously-com/releases/tag/v0.2.0) execute the following until I write a script:
 ```shell
 cd ~ # or you know, where you like downloads
 
-wget https://github.com/deciduously/deciduously-com/releases/download/v0.1.2/deciduously-com-0.1.2.tar.xz
+wget https://github.com/deciduously/deciduously-com/releases/download/v0.2.0/deciduously-com-0.2.0.tar.xz
 # or curl, aria2c, your C++ homework from a decade ago, etc
 
-tar xvf deciduously-com-0.1.2.tar.xz
-# if you don't have xz and REALLY don't want to install it, yell at me.
+tar xvf deciduously-com-0.2.0.tar.xz
+# if you don't have xz and REALLY don't want to install it or the build tools, yell at me and I'll provide alternatives.
 
-cd deciduously-0.1.2.tar.xz/
+cd deciduously-0.2.0.tar.xz/
 java -jar target/server.jar
 ```
 `server.jar` reads the following environment variables, given with their

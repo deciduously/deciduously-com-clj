@@ -11,7 +11,7 @@ done
 STATIC=${DIST:="dist/"}
 SERVER="target/server.jar"
 PKG="deciduously-com"
-VER="0.1.2" # TODO grab PKG and VER automagically
+VER="0.2.0" # TODO grab PKG and VER automagically
 TARGET="${PKG}-${VER}"
 OUTFILE="${OUTDIR}/${TARGET}.tar.xz"
 ERRORLOG="build-release_error.log"
