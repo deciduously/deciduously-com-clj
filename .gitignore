@@ -1,7 +1,0 @@
-.nrepl-*
-.#*
-.env
-target/
-dist/
-newrelic/
-*.log
