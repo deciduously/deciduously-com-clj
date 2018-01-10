@@ -5,6 +5,7 @@ export PATH := bin:$(PATH)
 
 boot		= $(shell which boot)
 project		= deciduously-com
+atom="$(project)-$(version)"
 version		= $(shell grep ^version version.properties | sed 's/.*=//')
 verfile		= version.properties
 dist		= $(DIST)
@@ -21,14 +22,14 @@ clean:
 				 (rm -fv .installed .tested .released .build .dload)
 
 mkdirs:
-	mkdir -p release/
+	mkdir -p release/target
 
 .dload: mkdir -p bin/
 	curl -fsSLo bin/boot https://github.com/boot-clj/boot-bin/releases/download/latest/boot.sh
 	chmod 755 bin/boot
 
-.build:
-				boot build
+.build: mkdirs
+				$(boot) build
 				date > .build
 
 .deps: .dload
@@ -43,12 +44,11 @@ deps: .deps
 
 install: .installed
 
-.released: mkdirs .installed
-	cp -r $(dist) $(release)
-	cp --parents $(server) $(release)
-	atom="$(project)-$(version)"
+.released: .installed
+	(cp -r $(dist) $(release))
+	cp $(server) "$(release)/target/server.jar"
 	mv $(release) "$(atom)/"
-	$(shell tar -cf - $(atom) | xz -9e -c - > "$(release)$(atom).jar.tar.xz")
+	$(shell tar -cf - "$(atom)/" | xz -9e -c - > "$(PWD)/$(release)$(atom).jar.tar.xz")
 	rm -rf "$(atom)/"
 	date > .released
 
