@@ -19,7 +19,7 @@
 (task-options!
   aot {:namespace #{'deciduously-com.core}}
   pom {:project 'deciduously-com
-       :version "0.2.0"}
+       :version (System/getenv "version")}
   jar  {:main 'deciduously-com.core
         :file "server.jar"}
   sift {:include #{#"server.jar"}})
