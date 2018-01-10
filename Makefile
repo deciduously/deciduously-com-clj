@@ -28,10 +28,10 @@ bin/boot: mkdirs
 	chmod 755 bin/boot
 
 deps: bin/boot
+	date > .deps
 
 .build: bin/boot
 				bin/boot build
-				cp $(server) $(dist)
 				date > .build
 
 .installed: .build
@@ -41,13 +41,16 @@ deps: bin/boot
 
 install: .installed
 
-.released: .tested .installed
-	$(shell tar -cf - $(dist) | xz -9e -c - > "$(release)$(project)-$(version).jar.tar.xz")
+.released: .installed
+	cp -r $(dist) $(release)
+	cp --parents $(server) $(release)
+	$(shell tar -cf - $(release) | xz -9e -c - > "$(release)$(project)-$(version).jar.tar.xz")
+	rm -rf $(release)$(dist)
 	date > .released
 
 release: .released
 
-.tested: bin/boot
+.tested: deps
 	(export BOOT_VERSION=2.7.2 && bin/boot midje)
 	date > .tested
 
