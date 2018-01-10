@@ -26,7 +26,7 @@ bin/boot:
 	(date > .boot-chk)
 
 $(server): bin/boot
-	(bin/boot build)
+	(export VERSION=$(version) && bin/boot build)
 	(date > .built)
 
 deps: bin/boot
