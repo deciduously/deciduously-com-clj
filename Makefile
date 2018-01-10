@@ -45,7 +45,7 @@ deps: .deps
 install: .installed
 
 .released: .installed
-	(cp -r $(dist) $(release))
+	mv  $(dist) $(release)
 	cp $(server) "$(release)/target/server.jar"
 	mv $(release) "$(atom)/"
 	$(shell tar -cf - "$(atom)/" | xz -9e -c - > "$(PWD)/$(release)$(atom).jar.tar.xz")
