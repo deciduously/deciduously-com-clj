@@ -32,17 +32,20 @@ as a JDK.  To use the provided script on Linux or OS X run for example:
 git clone https://github.com/deciduously/deciduously-com
 cd deciduously-com/
 chmod +x build-release.sh
-./build-release.sh -d "../releases" -c true
+./build-release.sh -d "../releases" # required
 ```
-The script takes about five minutes to run - such is Clojure.
+The script takes about four minutes to run - go put on a nice hot cup of your
+favorite kind of tea.  The resulting
+folder or archive can then be used as described in Usage.
 
 `build-release.sh` requires the target dir to be specified with `-d` and can
 optionally compress the output directory with xz by specifying `-c=true`.  It will build the server first, no need to run `boot build` separately.
 #### Tasks
 You may also invoke `boot` directly:
 * `boot build` to export the static site and build a production uberjar at target/server.jar.
-* `boot dev` to start a development server with hot reloading.
-* `boot midje` to run the test suite.
+* `boot dev` to start a development server with hot reloading
+* `boot dist` to export the static site
+* `boot midje` to run the test suite
 * `boot prod` to export and serve the static site
 
 ### Libraries
