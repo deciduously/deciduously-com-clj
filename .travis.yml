@@ -4,3 +4,8 @@ jdk:
 
 install: make deps
 script: make test
+
+cache:
+  directories:
+    - .autoconf
+    - $HOME/.m2

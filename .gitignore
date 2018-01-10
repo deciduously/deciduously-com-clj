@@ -12,4 +12,5 @@ deciduously-com/
 .dload
 .deps
 .boot-chk
+.keys
 bin/
