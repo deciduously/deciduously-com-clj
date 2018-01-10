@@ -32,9 +32,9 @@
 (def target-dir (or (System/getenv "DIST") "dist/"))
 
 (defn get-assets []
-  (concat
-   (assets/load-bundle "public" "styles.css" ["/styles/main.css"])
-   (assets/load-assets "public" ["/img/favicon.ico"])))
+  (concat 
+    (assets/load-bundle "public" "styles.css" ["/styles/main.css"])
+    (assets/load-assets "public" ["/img/favicon.ico"])))
 
 (defn get-exported-pages [target]
   (s/slurp-directory target #".+\.(html|js|css)$"))
