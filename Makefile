@@ -44,7 +44,7 @@ deps: bin/boot
 install: .installed
 
 .released: .installed
-	$(shell mkdir $(release) && tar -cf - $(project) | xz -9e -c - > "$(release)$(atom)-bundle.bin.tar.xz") && \
+	$(shell mkdir $(release) && tar -cf - $(project) | xz -9e -c - > "$(release)$(atom)-bundle.bin.tar.xz")
 	date > .released
 
 release: .released
