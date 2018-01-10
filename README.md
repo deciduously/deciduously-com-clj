@@ -1,20 +1,20 @@
 # deciduously.com
-[![GithubVersion](https://img.shields.io/badge/version-0.2.0-red.svg?style=flat-square)](https://github.com/deciduously/deciduously-com/tree/v0.2.0)
+[![GithubVersion](https://img.shields.io/badge/version-0.2.0-red.svg?style=flat-square)](https://github.com/deciduously/deciduously-com/tree/v0.2.0-alpha-r1)
 [![LatestRelease](https://img.shields.io/badge/release-January%202018-brightgreen.svg?style=flat-square)](https://github.com/deciduously/deciduously-com/tree/release)
 [![Heroku](https://heroku-badge.herokuapp.com/?app=polar-refuge-87230&style=flat)](http://www.deciduously.com)
 ### Usage
 
 Requires a JDK installed, either [Oracle](www.oracle.com/technetwork/java/javase/downloads/index.html") or [OpenJDK](https://openjdk.java.net) to run the binary.  I've only tested with 1.8 and 1.9 so far, CI coming eventually (TM).
 
-To download and run the [latest release](https://github.com/deciduously/deciduously-com/releases/tag/v0.2.0) execute the following until I write a script:
+To download and run the [latest release](https://github.com/deciduously/deciduously-com/releases/tag/v0.2.0-alpha-r1) execute the following until I write a script:
 ```shell
-cd ~ # or you know, where you like downloads
+cd ~ # or wherever you like downloads
 
-wget https://github.com/deciduously/deciduously-com/releases/download/v0.2.0/deciduously-com-0.2.0.tar.xz
+wget https://github.com/deciduously/deciduously-com/releases/download/v0.2.0-alpha-r1/deciduously-com-0.2.0.tar.xz
 # or curl, aria2c, your C++ homework from a decade ago, etc
 
 tar xvf deciduously-com-0.2.0.tar.xz
-# if you don't have xz and REALLY don't want to install it or the build tools, yell at me and I'll provide alternatives.
+# if you don't have xz don't want to install it or the build tools, open an issue!
 
 cd deciduously-0.2.0.tar.xz/
 java -jar target/server.jar
@@ -62,3 +62,4 @@ You may also invoke `boot` directly:
 ### Acknowledgements
 Many thanks to [Christian Johansen's](https://github.com/cjohansen) [tutorial](https://cjohensen.no/building-statis-sites-in-clojure-with-stasis/).
   I use boot instead of lein but otherwise followed this quite closely for the static site component.
+
