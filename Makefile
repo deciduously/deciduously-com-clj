@@ -23,14 +23,17 @@ clean:
 mkdirs:
 	mkdir -p bin/ release/
 
-bin/boot: mkdirs
+.dload: mkdirs
 	curl -fsSLo bin/boot https://github.com/boot-clj/boot-bin/releases/download/latest/boot.sh
 	chmod 755 bin/boot
+	date > .dload
 
-deps: bin/boot
+.deps: .dload
 	date > .deps
 
-.build: bin/boot
+deps: .deps
+
+.build:
 				bin/boot build
 				date > .build
 
@@ -50,7 +53,7 @@ install: .installed
 
 release: .released
 
-.tested: deps
+.tested:
 	(export BOOT_VERSION=2.7.2 && bin/boot midje)
 	date > .tested
 
