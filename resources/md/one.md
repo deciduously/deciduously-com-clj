@@ -5,7 +5,6 @@ Is there a less disgusting way to phrase this question?
 
 As you read on you'll find out - probably and definitely.  Here we go!
 ## Intro
-<<<<<<< HEAD
 I built this blog (almost) entirely in [Clojure](https://clojure.org/).  Not only that, but very very little Clojure.  The meatiest source file [web.clj](https://github.com/deciduously/deciduously-com/blob/master/src/deciduously_com/web.clj) clocks in at around 100 lines.  Granted, this is *not* a compliated website, but it's still impressive how much you can accomplish with so few lines of code.  This is made possible both through the terseness of the language and the thoughtfulness of the library designers.
 
 This is my [`loc`](https://github.com/cgag/loc) output at time of writing:
@@ -19,7 +18,6 @@ This is my [`loc`](https://github.com/cgag/loc) output at time of writing:
  HTML                     2            8            1            0            7
 --------------------------------------------------------------------------------
  Total                   13          532           78            4          450
->>>>>>> deciduously-com-post
 ```
 If you're unfamiliar with Clojure, it would help to spend some time with Chapter 3 of Clojure for the Brave and True: [Do Things](https://www.braveclojure.com/do-things/).  It's a good crash course in the syntax - there really isn't much syntax to learn, and you really don't need a ton to understand this post/series.
 
