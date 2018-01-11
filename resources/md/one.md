@@ -137,3 +137,5 @@ I'm deliberately reserving `core` for the `server.jar` main function - you can n
 That's it!  Run `boot dev -h`, and then `boot dev` will run a server on `localhost:3000`.  If you point your brower there, you should see:
 # Hello, world!
 Congratulations!  You built a webserver.  Go make a cup of tea.
+
+Thanks for playing, and come back next time to export and deploy your very own jar!
