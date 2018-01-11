@@ -20,16 +20,14 @@
      (contains? pages (str href "index.html")))))
 
 (fact "All links are valid"
-        (doseq [url (keys pages)
-                link (-> (:body (handler {:uri url}))
-                         java.io.StringReader.
-                         enlive/html-resource
-                         (enlive/select [:a]))]
-          (let [href (get-in link [:attrs :href])]
-            [url href (link-valid? pages link)] => [url href true])))
-
+      (doseq [url (keys pages)
+              link (-> (:body (handler {:uri url}))
+                       java.io.StringReader.
+                       enlive/html-resource
+                       (enlive/select [:a]))]
+        (let [href (get-in link [:attrs :href])]
+          [url href (link-valid? pages link)] => [url href true])))
 
 ;(fact "File structure is what we expect"
 ;      (let [dev [pages (get-pages)]]
 ;        (doseq [prod-files (file-seq (clojure.java.io/file ""))])))
-            
