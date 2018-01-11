@@ -9,13 +9,14 @@ I built this blog (almost) entirely in [Clojure](https://clojure.org/).  Not onl
 ```shell
  Language             Files        Lines        Blank      Comment         Code
 --------------------------------------------------------------------------------
- Markdown                 3          161           20            0          141
- Clojure                  4          156           27            4          125
+
+ Markdown                 3          213           29            0          184
+ Clojure                  4          160           28            4          128
  CSS                      2           79            2            0           77
  Makefile                 1           56           13            0           43
  HTML                     2            8            1            0            7
 --------------------------------------------------------------------------------
- Total                   12          460           63            4          393
+ Total                   12          516           73            4          439
 ```
 If you're unfamiliar with Clojure, it would help to spend some time with Chapter 3 of Clojure for the Brave and True: [Do Things](https://www.braveclojure.com/do-things/).  It's a good crash course in the syntax - there really isn't much syntax to learn, and you really don't need a ton to understand this post/series.
 
