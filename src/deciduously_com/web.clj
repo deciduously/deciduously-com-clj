@@ -21,9 +21,13 @@
 (def system-env #(or (System/getenv %) %2))
 
 (def port (Integer/valueOf (system-env "PORT" "3000")))
-(def version (second (str/split (slurp "version.properties") #"=")))
 (def target-dir (system-env "DIST" "dist/"))
 (def build (system-env "BUILD" "dev"))
+
+(def version (-> "version.properties"
+                 slurp
+                 (str/split #"=")
+                 second))
 
 (defn get-assets []
   (concat
