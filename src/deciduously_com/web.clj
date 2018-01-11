@@ -43,7 +43,7 @@
    [:body
     [:div.body page
      [:footer.footer "Copyright 2018 Herb Stratum." [:br]
-      [:a {:href (str "https://github.com/releases/tag/" version)} version]]]]))
+      [:a {:href (str "https://github.com/deciduously-com/deciduously/releases/tag/" version)} version]]]]))
 
 (defn partial-pages [pages]
   (zipmap (keys pages)
