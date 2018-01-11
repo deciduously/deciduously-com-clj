@@ -50,7 +50,7 @@
     [:div.body page
      [:footer.footer
       (str "Copyright 2018 ")
-      (http-link "https://www.deciduously.com" domain)[:br]
+      (http-link "/" domain)[:br]
       (http-link (str "https://github.com/deciduously/deciduously-com/releases/tag/" version) version)]]]))
 
 (defn partial-pages [pages]
