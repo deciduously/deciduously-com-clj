@@ -16,21 +16,12 @@
             [ring.middleware.reload :refer [wrap-reload]]
             [stasis.core :as s]))
 
-(def system-env (or (System/getenv %) %2))
+(def system-env #(or (System/getenv %) %2))
 
-(def env
-  (zipmap
-   (map keyword '[build port target-dir])
-   (map system-env {"BUILD" "dev" "PORT" "3000" "DIST" "dist/"})))
-
-(def config (let [[build port target-dir] (keys env)]
-              (if (= "prod" build)
-                {:pages get-exported-pages :handler prod-handler}
-                {:pages get-pages :handler dev-handler}))) ; add this map the the regular old env map if that worked for the grand total
-
-(def port (Integer/valueOf (or (System/getenv "PORT") "3000")))
-(def version (or (System/getenv "VERSION") "9999"))
-(def target-dir (or (System/getenv "DIST") "dist/"))
+(def port (Integer/valueOf (system-env "PORT" "3000")))
+(def version (system-env "VERSION" "9999"))
+(def target-dir (system-env "DIST" "dist/"))
+(def build (system-env "BUILD" "dev"))
 
 (defn get-assets []
   (concat
