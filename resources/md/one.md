@@ -5,7 +5,9 @@ Is there a less disgusting way to phrase this question?
 
 As you read on you'll find out - probably and definitely.  Here we go!
 ## Intro
-I built this blog (almost) entirely in [Clojure](https://clojure.org/).  Not only that, but very very little Clojure.  The meatiest source file [web.clj](https://github.com/deciduously/deciduously-com/blob/master/src/deciduously_com/web.clj) clocks in at around 100 lines.  Granted, this is *not* a compliated website, but it's still impressive how much you can accomplish with so few lines of code.  This is made possible both This is my [`loc`](https://github.com/cgag/loc) output at time of writing:
+I built this blog (almost) entirely in [Clojure](https://clojure.org/).  Not only that, but very very little Clojure.  The meatiest source file [web.clj](https://github.com/deciduously/deciduously-com/blob/master/src/deciduously_com/web.clj) clocks in at around 100 lines.  Granted, this is *not* a compliated website, but it's still impressive how much you can accomplish with so few lines of code.  This is made possible both through the terseness of the language and the thoughtfulness of the library designers.
+
+This is my [`loc`](https://github.com/cgag/loc) output at time of writing:
 ```shell
  Language             Files        Lines        Blank      Comment         Code
 --------------------------------------------------------------------------------
