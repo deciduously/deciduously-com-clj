@@ -16,6 +16,8 @@
             [ring.middleware.reload :refer [wrap-reload]]
             [stasis.core :as s]))
 
+(def domain "deciduously")
+
 (def system-env #(or (System/getenv %) %2))
 
 (def port (Integer/valueOf (system-env "PORT" "3000")))
@@ -31,6 +33,10 @@
 (defn get-exported-pages [target]
   (s/slurp-directory target #".+\.(html|js|css)$"))
 
+(defn http-link
+  ([url] [:a {:href url} url])
+  ([url text] [:a {:href url} text]))
+
 (defn layout-page [request page]
   (html5
    [:head
@@ -42,8 +48,10 @@
     (link-to-css-bundles request ["styles.css"])]
    [:body
     [:div.body page
-     [:footer.footer "Copyright 2018 Herb Stratum." [:br]
-      [:a {:href (str "https://github.com/deciduously/deciduously-com/releases/tag/" version)} version]]]]))
+     [:footer.footer
+      (str "Copyright 2018 ")
+      (http-link "https://www.deciduously.com" domain)[:br]
+      (http-link (str "https://github.com/deciduously/deciduously-com/releases/tag/" version) version)]]]))
 
 (defn partial-pages [pages]
   (zipmap (keys pages)

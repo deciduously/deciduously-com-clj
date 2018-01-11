@@ -33,6 +33,7 @@ BUILD=dev
 * [bash](https://www.gnu.org/software/bash/)
 * [make](https://www.gnu.org/software/make/)
 * [curl](https://curl.haxx.se/)
+* [xz](https://tukaani.org/xz/)
 #### Bundle
 ```shell
 git clone https://github.com/deciduously/deciduously-com
@@ -43,15 +44,17 @@ dependencies - go put on a nice hot cup of your
 favorite kind of tea.  The resulting
 folder can then be used as described in Usage at `dist/`. `make release` will produce a compressed archive at `release/deciduously-com-0.1.3-alpha-r1-bundle.tar.xz`.  Run `make help` for a list of all available make targets.
 #### Hack
-Invoke `boot -h` for the full list of available tasks.  I provide the following
+`boot -h` for the full list of available tasks.  I define the following
 in
 [build.boot](https://github.com/deciduously/deciduously-com/blob/release/build.boot):
 * `boot build` to export the static site and build a production uberjar at target/server.jar.
 * `boot dev` to start a development server with hot reloading
 * `boot dist` to export the static site
 * `boot prod` to export and serve the static site
-Use `make test` to run the test suite, or check
-[Travis](travis-ci.org/deciduously/deciduously-com).
+
+Instead of `boot build` at first, I recommend using `make install` to invoke `boot build` and put together the runtime environment for you.  Fewer stacktraces are almost guaranteed.
+
+Use `make test` to run the test suite, or check [Travis](travis-ci.org/deciduously/deciduously-com).
 ### Libraries
 * [**Clygments**](https://github.com/bfontaine.clygments) - Clojure wrapper for [Pygments](https://pygments.org)
 * [**Enlive**](https://github.com/cgrand/enlive) - HTML/XML extraction and transformation
@@ -67,6 +70,7 @@ Use `make test` to run the test suite, or check
 * Makefile tweaking - make midje actually trigger a non-zero code
 * Lots more tests
 * Build a war to run with jetty-runner.jar
+* Learn the boot task DSL
 * Read partials from edn, not raw html
 * Write a blog post :)
 * Prettier layout
@@ -75,4 +79,6 @@ Use `make test` to run the test suite, or check
 ### Acknowledgements
 Many thanks to [Christian Johansen's](https://github.com/cjohansen) [tutorial](https://cjohensen.no/building-statis-sites-in-clojure-with-stasis/).
   I use boot instead of lein but otherwise followed this quite closely for the static site component.
+  
+  I've never written a makefile beyond small C++ assignments before and it probably shows.  I started from [boot's](https://github.com/boot-clj/boot/blob/master/Makefile) very own and kindsa destroyed it for a straight day and a half until it worked.  Feel free to point and laugh, sling vegetables, and/or open a pull request!
 
