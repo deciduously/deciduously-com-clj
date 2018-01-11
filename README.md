@@ -54,7 +54,7 @@ in
 
 Instead of `boot build` at first, I recommend using `make install` to invoke `boot build` and put together the runtime environment for you.  Fewer stacktraces are almost guaranteed.
 
-Use `make test` will run `make release` and then `boot midje`.  Check [Travis](https://travis-ci.org/deciduously/deciduously-com) for recent outputs.
+Use `make test` to run `make release` and then `boot midje`.  Check [Travis](https://travis-ci.org/deciduously/deciduously-com) for recent outputs.
 ### Libraries
 * [**Clygments**](https://github.com/bfontaine.clygments) - Clojure wrapper for [Pygments](https://pygments.org)
 * [**Enlive**](https://github.com/cgrand/enlive) - HTML/XML extraction and transformation
