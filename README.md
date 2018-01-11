@@ -65,16 +65,6 @@ Use `make test` to run the test suite, or check [Travis](travis-ci.org/deciduous
 * [**Optimus**](https://github.com/magnars/optimus) - Ring middleware for frontend performance optimization
 * [**Stasis**](https://github.com/magnars/stasis) - Static website toolset
 * [**boot-http**](https://github.com/pandeiro/boot-http) - Boot http server plugin
-### TODOs
-* Makefile tweaking - make midje actually trigger a non-zero code
-* Lots more tests
-* Build a war to run with jetty-runner.jar
-* Learn the boot task DSL
-* Read partials from edn, not raw html
-* Write a blog post :)
-* Prettier layout
-* Compojure instead of just stasis/server-pages
-* Bundle LICENSE with jar?
 ### Acknowledgements
 Many thanks to [Christian Johansen's](https://github.com/cjohansen) [tutorial](https://cjohensen.no/building-statis-sites-in-clojure-with-stasis/).
   I use boot instead of lein but otherwise followed this quite closely for the static site component.
