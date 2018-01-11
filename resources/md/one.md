@@ -1,4 +1,5 @@
-# deciduously.com: Genesis
+# Static Site in Clojure
+## Part 1: boot
 What better way to birth a blog than a discussion of the guts?
 
 Is there a less disgusting way to phrase this question?
@@ -125,7 +126,7 @@ Now, finally, let's make a Clojure file.  Execute `mkdir -p src/example_com/ && 
 We just pull in the `html` function to compile Clojure vectors to html strings from [`hiccup`](https://github.com/weavejester/hiccup).
 
 Then add a very basic [Ring handler](https://github.com/ring-clojure/ring/wiki/Concepts):
-```
+```clojure
 (defn dev-handler [req]
   {:status 200
    :headers {"Content-Type" "text/plain"}
