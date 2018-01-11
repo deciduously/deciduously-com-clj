@@ -47,6 +47,7 @@
 
 (defn partial-pages [pages]
   (zipmap (keys pages)
+          (map #(fn [req] (layout-page req %)) (vals pages))))
 
  ; TODO run edn through hiccup instead of just having raw html
 
@@ -79,8 +80,6 @@
       wrap-content-type
       wrap-not-modified
       wrap-gzip))
-
-
 
 (defn export [target-dir]
   (let [assets (optimizations/all (get-assets) {})]
