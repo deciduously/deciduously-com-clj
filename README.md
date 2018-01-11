@@ -1,6 +1,6 @@
 # deciduously.com
 ### Contents
-[![GithubVersion](https://img.shields.io/badge/version-0.1.2-red.svg?style=flat-square&color=brightgreen)](https://github.com/deciduously/deciduously-com/tree/v0.1.2-alpha-r2)
+[![GithubVersion](https://img.shields.io/badge/version-0.1.2-red.svg?style=flat-square&color=brightgreen)](https://github.com/deciduously/deciduously-com/tree/v0.1.2-alpha-r3)
 [![Heroku](https://heroku-badge.herokuapp.com/?app=polar-refuge-87230&style=flat)](http://www.deciduously.com)
 [![GitHub license](https://img.shields.io/github/license/deciduously/deciduously-com.svg?style=flat-square)](https://github.com/deciduously/deciduously-com/blob/release/LICENSE)
 [![Build Status](https://travis-ci.org/deciduously/deciduously-com.svg?branch=release)](https://travis-ci.org/deciduously/deciduously-com)
@@ -9,14 +9,14 @@
 3. [Libraries](#libraries)
 4. [Acknowledgements](#acknowledgements)
 ### Run
-To download and run the [latest release](https://github.com/deciduously/deciduously-com/releases/tag/v0.1.2-alpha-r1) execute the following:
+To download and run the [latest release](https://github.com/deciduously/deciduously-com/releases/tag/v0.1.2-alpha-r3) execute the following:
 ```shell
 # or wherever you like downloads
 cd ~
 # curl, aria2c, your C++ homework from a decade ago, soft prayer, etc...
-wget https://github.com/deciduously/deciduously-com/releases/download/v0.1.2-alpha-r2/deciduously-com-0.1.2-alpha-r2-bundle.bin.tar.xz
+wget https://github.com/deciduously/deciduously-com/releases/download/v0.1.2-alpha-r3/deciduously-com-0.1.2-alpha-r3-bundle.bin.tar.xz
 # If you cannot use xz or any of the build tools, open an issue!
-tar xvf deciduously-com-0.1.2-alpha-r2-bundle.bin.tar.xz
+tar xvf deciduously-com-0.1.2-alpha-r3-bundle.bin.tar.xz
 
 cd deciduously-com/ && java -jar target/server.jar # either oracle or openjdk
 ```
@@ -41,7 +41,7 @@ cd deciduously-com/ && make install
 This takes about four minutes to run, longer the first time as boot gathers
 dependencies - go put on a nice hot cup of your
 favorite kind of tea.  The resulting
-folder can then be used as described in Usage at `dist/`. `make release` will produce a compressed archive at `release/deciduously-com-0.1.2-alpha-r1-bundle.tar.xz`.  Run `make help` for a list of all available make targets.
+folder can then be used as described in Usage at `dist/`. `make release` will produce a compressed archive at `release/deciduously-com-0.1.3-alpha-r1-bundle.tar.xz`.  Run `make help` for a list of all available make targets.
 #### Hack
 Invoke `boot -h` for the full list of available tasks.  I provide the following
 in
