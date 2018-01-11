@@ -38,6 +38,7 @@ deps: bin/boot
 	cp -r $(DIST) $(project)           &&  \
 	cp $(license) $(project)           &&  \
 	cp $(readme) $(project)            &&  \
+	cp $(verfile) $(project)		   &&  \
 	cp $(server) "$(project)/target/"  &&  \
 	date > .installed
 
