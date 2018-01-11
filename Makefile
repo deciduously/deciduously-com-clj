@@ -27,7 +27,6 @@ bin/boot:
 	date > .boot-chk)
 
 $(server): bin/boot
-	export VERSION=$(version) && \
 	bin/boot build && \
 	date > .built
 
@@ -50,7 +49,8 @@ install: .installed
 
 release: .released
 
-.tested: bin/boot
+.tested: .released
 	(export BOOT_VERSION=2.7.2 && bin/boot midje)
+	date > .tested
 
 test: .tested
