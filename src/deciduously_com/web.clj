@@ -37,6 +37,10 @@
   ([url] [:a {:href url} url])
   ([url text] [:a {:href url} text]))
 
+(def github-link
+  (let [base "https://github.com/deciduously/deciduously-com"]
+    (str base (if (= "prod" build) (str "/releases/tag/" version) "/tree/master"))))
+
 (defn layout-page [request page]
   (html5
    [:head
@@ -47,11 +51,11 @@
     [:link {:rel "icon" :href (link/file-path request "/img/favicon.ico")}]
     (link-to-css-bundles request ["styles.css"])]
    [:body
-    [:div.body page
+    [:div.body page [:br]
      [:footer.footer
       (str "Copyright 2018 ")
-      (http-link "https://www.deciduously.com" domain)[:br]
-      (http-link (str "https://github.com/deciduously/deciduously-com/releases/tag/" version) version)]]]))
+      (http-link "/" domain) [:br]
+      (http-link github-link "source")]]]))
 
 (defn partial-pages [pages]
   (zipmap (keys pages)
