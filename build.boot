@@ -7,7 +7,7 @@
                  [enlive "1.1.6" :scope "test"]
                  [hiccup "1.0.5" :scope "test"]
                  [markdown-clj "1.0.1" :scope "test"]
-                 [midje "1.9.1" :scope "test"]
+                 [midje "1.9.1" :scope "test" :exclusions [org.clojure/clojure]]
                  [optimus "0.20.1"]
                  [ring/ring-core "1.6.3"]
                  [ring/ring-jetty-adapter "1.6.3"]
