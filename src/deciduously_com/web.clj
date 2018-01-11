@@ -31,6 +31,9 @@
 (defn get-exported-pages [target]
   (s/slurp-directory target #".+\.(html|js|css)$"))
 
+(defn http-link [url & text]
+  [:a {:href url} text])
+
 (defn layout-page [request page]
   (html5
    [:head
@@ -42,7 +45,7 @@
     (link-to-css-bundles request ["styles.css"])]
    [:body
     [:div.body page
-     [:footer.footer "Copyright 2018 Herb Stratum." [:br]
+     [:footer.footer (http-link "http://www.deciduously.com" "deciduously") "Copyright 2018 " [:br]
       [:a {:href (str "https://github.com/deciduously/deciduously-com/releases/tag/" version)} version]]]]))
 
 (defn partial-pages [pages]
