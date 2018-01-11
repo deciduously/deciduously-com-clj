@@ -78,5 +78,5 @@ Use `make test` to run the test suite, or check [Travis](travis-ci.org/deciduous
 ### Acknowledgements
 Many thanks to [Christian Johansen's](https://github.com/cjohansen) [tutorial](https://cjohensen.no/building-statis-sites-in-clojure-with-stasis/).
   I use boot instead of lein but otherwise followed this quite closely for the static site component.
-  I've never written a makefile beyond small C++ assignments before and it probably shows.  Feel free to point and laugh or open a pull request!
+  I've never written a makefile beyond small C++ assignments before and it probably shows.  I started from [boot's](https://github.com/boot-clj/boot/blob/master/Makefile) very own and kindsa destroyed it for a straight day and a half until it worked.  Feel free to point and laugh, sling vegetables, and/or open a pull request!
 
