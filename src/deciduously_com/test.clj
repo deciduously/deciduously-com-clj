@@ -29,7 +29,7 @@
             [url href (link-valid? pages link)] => [url href true])))
 
 
-;(fact "File structure fo ot what we expect"
+;(fact "File structure is what we expect"
 ;      (let [dev [pages (get-pages)]]
 ;        (doseq [prod-files (file-seq (clojure.java.io/file ""))])))
             
