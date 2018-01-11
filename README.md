@@ -1,22 +1,22 @@
 # deciduously.com
 ### Contents
-[![GithubVersion](https://img.shields.io/badge/version-0.1.2-red.svg?style=flat-square&color=brightgreen)](https://github.com/deciduously/deciduously-com/tree/v0.1.2-alpha)
+[![GithubVersion](https://img.shields.io/badge/version-0.1.2-red.svg?style=flat-square&color=brightgreen)](https://github.com/deciduously/deciduously-com/tree/v0.1.2-alpha-r1)
 [![Heroku](https://heroku-badge.herokuapp.com/?app=polar-refuge-87230&style=flat)](http://www.deciduously.com)
-[![GitHub license](https://img.shields.io/github/license/deciduously/deciduously-com.svg?style=flat-square)](https://github.com/deciduously/deciduously-com/blob//LICENSE)
+[![GitHub license](https://img.shields.io/github/license/deciduously/deciduously-com.svg?style=flat-square)](https://github.com/deciduously/deciduously-com/blob/release/LICENSE)
 [![Build Status](https://travis-ci.org/deciduously/deciduously-com.svg?branch=release)](https://travis-ci.org/deciduously/deciduously-com)
 1. [Run](#run)
 2. [Build](#build) - [requirements](#requirements)
 3. [Libraries](#libraries)
 4. [Acknowledgements](#acknowledgements)
 ### Run
-To download and run the [latest release](https://github.com/deciduously/deciduously-com/releases/tag/v0.1.2-alpha) execute the following:
+To download and run the [latest release](https://github.com/deciduously/deciduously-com/releases/tag/v0.1.2-alpha-r1) execute the following:
 ```shell
 # or wherever you like downloads
 cd ~
 # curl, aria2c, your C++ homework from a decade ago, soft prayer, etc...
-wget https://github.com/deciduously/deciduously-com/releases/download/v0.1.2-alpha/deciduously-com-0.1.2-alpha-bundle.bin.tar.xz
+wget https://github.com/deciduously/deciduously-com/releases/download/v0.1.2-alpha/deciduously-com-0.1.2-alpha-r1-bundle.bin.tar.xz
 # If you cannot use xz or any of the build tools, open an issue!
-tar xvf deciduously-com-0.1.2-alpha-bundle.bin.tar.xz
+tar xvf deciduously-com-0.1.2-alpha-r1-bundle.bin.tar.xz
 
 cd deciduously-com/ && java -jar target/server.jar # either oracle or openjdk
 ```
@@ -25,6 +25,7 @@ defaults:
 ```shell
 PORT=3000
 DIST=dist/
+BUILD=dev
 ```
 ### Build
 #### Requirements
@@ -40,11 +41,11 @@ cd deciduously-com/ && make install
 This takes about four minutes to run, longer the first time as boot gathers
 dependencies - go put on a nice hot cup of your
 favorite kind of tea.  The resulting
-folder can then be used as described in Usage at `dist/`. `make release` will produce a compressed archive at `release/deciduously-com-0.1.2-alpha-bundle.tar.xz`.  Run `make help` for a list of all available make targets.
+folder can then be used as described in Usage at `dist/`. `make release` will produce a compressed archive at `release/deciduously-com-0.1.2-alpha-r1-bundle.tar.xz`.  Run `make help` for a list of all available make targets.
 #### Hack
 Invoke `boot -h` for the full list of available tasks.  I provide the following
 in
-[build.boot](https://github.com/deciduously/deciduously-com/blob/master/build.boot):
+[build.boot](https://github.com/deciduously/deciduously-com/blob/release/build.boot):
 * `boot build` to export the static site and build a production uberjar at target/server.jar.
 * `boot dev` to start a development server with hot reloading
 * `boot dist` to export the static site
@@ -64,12 +65,13 @@ Use `make test` to run the test suite, or check
 * [**boot-http**](https://github.com/pandeiro/boot-http) - Boot http server plugin
 ### TODOs
 * Makefile tweaking - make midje actually trigger a non-zero code
+* Lots more tests
 * Build a war to run with jetty-runner.jar
 * Read partials from edn, not raw html
 * Write a blog post :)
 * Prettier layout
-* Add Compojure?  Maybe?
-* Add the license better
+* Compojure instead of just stasis/server-pages
+* Bundle LICENSE with jar?
 ### Acknowledgements
 Many thanks to [Christian Johansen's](https://github.com/cjohansen) [tutorial](https://cjohensen.no/building-statis-sites-in-clojure-with-stasis/).
   I use boot instead of lein but otherwise followed this quite closely for the static site component.
