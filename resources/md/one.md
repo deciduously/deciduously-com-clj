@@ -8,18 +8,8 @@ As you read on you'll find out - probably and definitely.  Here we go!
 ## Intro
 I built this blog (almost) entirely in [Clojure](https://clojure.org/).  Not only that, but very very little Clojure.  The meatiest source file [web.clj](https://github.com/deciduously/deciduously-com/blob/master/src/deciduously_com/web.clj) clocks in at around 100 lines.  Granted, this is *not* a compliated website, but it's still impressive how much you can accomplish with so few lines of code.  This is made possible both through the terseness of the language and the thoughtfulness of the library designers.
 
-This is my [`loc`](https://github.com/cgag/loc) output at time of writing:
-```shell
- Language             Files        Lines        Blank      Comment         Code
---------------------------------------------------------------------------------
- Markdown                 3          215           30            0          185
- Clojure                  4          160           28            4          128
- CSS                      2           79            2            0           77
- Makefile                 2           70           17            0           53
- HTML                     2            8            1            0            7
---------------------------------------------------------------------------------
- Total                   13          532           78            4          450
-```
+According to [`loc`](https://github.com/cgag/loc)at time of writing I have 185 sloc of Markdown, 160 sloc of Clojure, 77 of CSS including externs, 70 for the Makefile, and 8 of HTML - 450 exactly.
+
 If you're unfamiliar with Clojure, it would help to spend some time with Chapter 3 of Clojure for the Brave and True: [Do Things](https://www.braveclojure.com/do-things/).  It's a good crash course in the syntax - there really isn't much syntax to learn, and you really don't need a ton to understand this post/series.
 
 To start off, the bulk of the static site engine is directly taken from this excellent 2011 [tutorial](https://cjohensen.no/building-statis-sites-in-clojure-with-stasis/) by [Christian Johansen](https://github.com/cjohansen).  I will try as much as possible to avoid overlapping except where necessary - go read the tutorial, it's fun.
