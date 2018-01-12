@@ -66,19 +66,9 @@ Use `make test` to run `make release` and then `boot midje`.  Check [Travis](htt
 * [**Optimus**](https://github.com/magnars/optimus) - Ring middleware for frontend performance optimization
 * [**Stasis**](https://github.com/magnars/stasis) - Static website toolset
 * [**boot-http**](https://github.com/pandeiro/boot-http) - Boot http server plugin
-### TODOs
-* Makefile tweaking - make midje actually trigger a non-zero code
-* Lots more tests
-* Build a war to run with jetty-runner.jar
-* Learn the boot task DSL
-* Read partials from edn, not raw html
-* Write a blog post :)
-* Prettier layout
-* Compojure instead of just stasis/server-pages
-* Bundle LICENSE with jar?
 ### Acknowledgements
 Many thanks to [Christian Johansen's](https://github.com/cjohansen) [tutorial](https://cjohensen.no/building-statis-sites-in-clojure-with-stasis/).
   I use boot instead of lein but otherwise followed this quite closely for the static site component.
   
-  I've never written a makefile beyond small C++ assignments before and it probably shows.  I started from [boot's](https://github.com/boot-clj/boot/blob/master/Makefile) very own and kindsa destroyed it for a straight day and a half until it worked.  Feel free to point and laugh, sling vegetables, and/or open a pull request!
+  I've never written a makefile beyond small C++ assignments before and it probably shows.  I started from [boot's](https://github.com/boot-clj/boot/blob/master/Makefile) very own and kinda destroyed it for a straight day and a half until it worked.  Feel free to point and laugh, sling vegetables, and/or open a pull request!
 
