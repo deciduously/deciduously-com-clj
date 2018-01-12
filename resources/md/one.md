@@ -6,8 +6,8 @@ Is there a less disgusting way to phrase this question?
 
 As you read on you'll find out - probably and definitely.  Here we go!
 ## Intro
-### Preaamble
-FOr starters, the bulk of the static site engine is directly taken from this excellent 2011 [tutorial](https://cjohensen.no/building-statis-sites-in-clojure-with-stasis/) by [Christian Johansen](https://github.com/cjohansen).  I will try as much as possible to avoid overlapping except where necessary - go read the tutorial, it's fun.
+### Preamble
+For starters, the bulk of the static site engine is directly taken from this excellent 2011 [tutorial](https://cjohensen.no/building-statis-sites-in-clojure-with-stasis/) by [Christian Johansen](https://github.com/cjohansen).  I will try as much as possible to avoid overlapping except where necessary - go read the tutorial, it's fun.
 
 This is not intended to be a rewrite, despite the overlap.  Instead, my intent here is to walk through the process of getting that six year old Clojure tutorial working for me in a larger context, using modern tools.  His walkthrough takes you up to exporting an optimized static site for uploading elsewhere, and except for a few sticking points worked without much pain.  I wanted to take a stab at building the server and deploying to Heroku as well, though, two things I'd never done.
 
@@ -17,7 +17,7 @@ Please tell me at [contact@deciduously.com](contact@deciduously.com) if somethin
 
 This post will be concerned with setting up the project, stay tuned for more!
 ### What we're dealing with
-I built this blog (almost) entirely in [Clojure](https://clojure.org/).  Not only that, but very very little Clojure.  The meatiest source file [web.clj](https://github.com/deciduously/deciduously-com/blob/master/src/deciduously_com/web.clj) clocks in at around 100 lines.  Granted, this is *not* a complicated website, but it's still impressive how much you can accomplish with so few lines of code.  This is made possible both through the terseness of the language and the thoughtfulness of the library designers.
+I [built](https://github.com/deciduously/deciduously-com) this [blog](http://www.deciduously.com) (almost) entirely in [Clojure](https://clojure.org/).  Not only that, but very very little Clojure.  The meatiest source file [web.clj](https://github.com/deciduously/deciduously-com/blob/master/src/deciduously_com/web.clj) clocks in at around 100 lines.  Granted, this is *not* a complicated website, but it's still impressive how much you can accomplish with so few lines of code.  This is made possible both through the terseness of the language and the thoughtfulness of the library designers.
 
 In 160 lines of Clojure including tests, it can gather Clojure vectors, markdown files, stylesheets, and other static assets into a compiled bundle optimized for production, and serve it as well in different build configurations including a hot reloading development server.
 
