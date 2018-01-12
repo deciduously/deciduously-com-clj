@@ -9,16 +9,12 @@
 3. [Libraries](#libraries)
 4. [Acknowledgements](#acknowledgements)
 ### Run
-To download and run the [latest release](https://github.com/deciduously/deciduously-com/releases/tag/v0.1.2-alpha-r3) execute the following:
+To download and run the [latest release](https://github.com/deciduously/deciduously-com/releases/tag/v0.1.2-alpha-r3) make sure you have `java` available and execute the following:
 ```shell
-# or wherever you like downloads
 cd ~
-# curl, aria2c, your C++ homework from a decade ago, soft prayer, etc...
 wget https://github.com/deciduously/deciduously-com/releases/download/v0.1.2-alpha-r3/deciduously-com-0.1.2-alpha-r3-bundle.bin.tar.xz
-# If you cannot use xz or any of the build tools, open an issue!
 tar xvf deciduously-com-0.1.2-alpha-r3-bundle.bin.tar.xz
-
-cd deciduously-com/ && java -jar target/server.jar # either oracle or openjdk
+cd deciduously-com/ && java -jar target/server.jar
 ```
 `server.jar` reads the following environment variables, given with their
 defaults:
