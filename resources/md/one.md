@@ -6,6 +6,17 @@ Is there a less disgusting way to phrase this question?
 
 As you read on you'll find out - probably and definitely.  Here we go!
 ## Intro
+### Preaamble
+FOr starters, the bulk of the static site engine is directly taken from this excellent 2011 [tutorial](https://cjohensen.no/building-statis-sites-in-clojure-with-stasis/) by [Christian Johansen](https://github.com/cjohansen).  I will try as much as possible to avoid overlapping except where necessary - go read the tutorial, it's fun.
+
+This is not intended to be a rewrite, despite the overlap.  Instead, my intent here is to walk through the process of getting that six year old Clojure tutorial working for me in a larger context, using modern tools.  His walkthrough takes you up to exporting an optimized static site for uploading elsewhere, and except for a few sticking points worked without much pain.  I wanted to take a stab at building the server and deploying to Heroku as well, though, two things I'd never done.
+
+I will try to be in depth where this project differs and brief where they don't, and I'll do my best to provide links for added clarity if necessary.
+
+Please tell me at [contact@deciduously.com](contact@deciduously.com) if something needs work!
+
+This post will be concerned with setting up the project, stay tuned for more!
+### What we're dealing with
 I built this blog (almost) entirely in [Clojure](https://clojure.org/).  Not only that, but very very little Clojure.  The meatiest source file [web.clj](https://github.com/deciduously/deciduously-com/blob/master/src/deciduously_com/web.clj) clocks in at around 100 lines.  Granted, this is *not* a complicated website, but it's still impressive how much you can accomplish with so few lines of code.  This is made possible both through the terseness of the language and the thoughtfulness of the library designers.
 
 In 160 lines of Clojure including tests, it can gather Clojure vectors, markdown files, stylesheets, and other static assets into a compiled bundle optimized for production, and serve it as well in different build configurations including a hot reloading development server.
@@ -14,21 +25,12 @@ I've chosen to use `boot` instead of `lein`, which complicated Heroku and Travis
 
 According to [`loc`](https://github.com/cgag/loc) at time of writing I have 185 sloc of Markdown, 160 sloc of Clojure, 77 of CSS including externs, 70 for the Makefile, and 8 of HTML - 450 exactly, which is incredibly small given how versatile it's already become.
 
+The fact that the tutorial itself required little tweaking if any should come as no surprise - many Clojure libraries seem to hit a point where they're done and stop development.  A lot of robust tools can feel like abandonware when you look at their commit history.  This stability is at least partially a function of Clojure expressiveness and brevity - fewer bugs to squash in fewer lines of code.  When things don't work, though, it can be difficult to track down answers to your questions which is why I wanted to do this from scratch as simply as possible.
+
 If you're unfamiliar with Clojure, it would help to spend some time with Chapter 3 of Clojure for the Brave and True: [Do Things](https://www.braveclojure.com/do-things/).  It's a good crash course in the syntax - there really isn't much syntax to learn, and you really don't need a ton to understand this post/series.
 
 The book (rightly) suggests you follow along in a [REPL](https://en.wikipedia.org/wiki/Read-eval-print_loop).  My favorite quick REPL is [planck](http://planck-repl.org), but you can do it using the tools in this project by grabbing the Makefile below, running `make deps`, and running `bin/boot repl`.  This will take a while, especially the first time.
 
-To start off, the bulk of the static site engine is directly taken from this excellent 2011 [tutorial](https://cjohensen.no/building-statis-sites-in-clojure-with-stasis/) by [Christian Johansen](https://github.com/cjohansen).  I will try as much as possible to avoid overlapping except where necessary - go read the tutorial, it's fun.
-
-This is not intended to be a rewrite, despite the overlap.  Instead, my intent here is to walk through the process of getting that six year old Clojure tutorial working for me in a larger context, using modern tools.  His walkthrough takes you up to exporting an optimized static site for uploading elsewhere, and except for a few sticking points worked without much pain.  I wanted to take a stab at building the server and deploying to Heroku as well, though, two things I'd never done.
-
-I will try to be in depth where this project differs and brief where they don't, and I'll do my best to provide links for added clarity if necessary.
-
-Please tell me at [contact@deciduously.com](contact@deciduously.com) if something needs work!
-
-The fact that the tutorial itself required little tweaking if any should come as no surprise - many Clojure libraries seem to hit a point where they're done and stop development.  A lot of robust tools can feel like abandonware when you look at their commit history.  When things don't work, though, it can be difficult to track down answers to your questions which is why I wanted to do this from scratch as simply as possible.
-
-This post will be concerned with setting up the project, stay tuned for more!
 ## Booting Up
 #### Dependencies
 If you have a JDK, GNU `make`, and `curl` installed, you're good to go.  If you don't, your OS/package manger will be able to help you out.  That's really it - I use `xz` to compress releases, you can use anything you like.
