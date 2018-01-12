@@ -109,7 +109,7 @@ Now you can add a dev task and a build task:
   "Run live development server"
   []
   (comp
-    (serve :handler `example.core/dev-handler :reload true :port 3000)
+    (serve :handler `example-com.web/dev-handler :reload true :port 3000)
     (wait)))
 ```
 And that's that!  Four forms.  Configuring `boot` starts off quite simple.  You compose your own build pipelines with `comp` - these are very readable and act as you expect.
