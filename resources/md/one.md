@@ -8,7 +8,11 @@ As you read on you'll find out - probably and definitely.  Here we go!
 ## Intro
 I built this blog (almost) entirely in [Clojure](https://clojure.org/).  Not only that, but very very little Clojure.  The meatiest source file [web.clj](https://github.com/deciduously/deciduously-com/blob/master/src/deciduously_com/web.clj) clocks in at around 100 lines.  Granted, this is *not* a complicated website, but it's still impressive how much you can accomplish with so few lines of code.  This is made possible both through the terseness of the language and the thoughtfulness of the library designers.
 
-According to [`loc`](https://github.com/cgag/loc) at time of writing I have 185 sloc of Markdown, 160 sloc of Clojure, 77 of CSS including externs, 70 for the Makefile, and 8 of HTML - 450 exactly.
+In 160 lines of Clojure including tests, it can gather Clojure vectors, markdown files, stylesheets, and other static assets into a compiled bundle optimized for production, and serve it as well in different build configurations including a hot reloading development server.
+
+I've chosen to use `boot` instead of `lein`, which complicated Heroku and Travis integration somewhat but not greatly, and I'll discuss how I tackled the pitfalls.
+
+According to [`loc`](https://github.com/cgag/loc) at time of writing I have 185 sloc of Markdown, 160 sloc of Clojure, 77 of CSS including externs, 70 for the Makefile, and 8 of HTML - 450 exactly, which is incredibly small given how versatile it's already become.
 
 If you're unfamiliar with Clojure, it would help to spend some time with Chapter 3 of Clojure for the Brave and True: [Do Things](https://www.braveclojure.com/do-things/).  It's a good crash course in the syntax - there really isn't much syntax to learn, and you really don't need a ton to understand this post/series.
 
@@ -125,7 +129,8 @@ Then add a very basic [Ring handler](https://github.com/ring-clojure/ring/wiki/C
    :body (html [:h1 "Hello, world!"]
                [:p (str "IP: " (:remote-addrs req))])})
 ```
-I'm deliberately reserving `core` for the `server.jar` main function - you can name the namespace whatever you like.  
+I'm deliberately reserving `core` for the `server.jar` main function - you can name the namespace whatever you like.
+
 That's it!  Run `boot dev -h`, and then `boot dev` will run a server on `localhost:3000`.  If you point your brower there, you should see:
 # Hello, world!
 Congratulations!  You built a webserver.  Go make a cup of tea.
