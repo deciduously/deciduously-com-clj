@@ -19,7 +19,7 @@ This post will be concerned with setting up the project, stay tuned for more!
 ### What we're dealing with
 I [built](https://github.com/deciduously/deciduously-com) this [blog](http://www.deciduously.com) (almost) entirely in [Clojure](https://clojure.org/).  Not only that, but very very little Clojure.  The meatiest source file [web.clj](https://github.com/deciduously/deciduously-com/blob/master/src/deciduously_com/web.clj) clocks in at around 100 lines.  Granted, this is *not* a complicated website, but it's still impressive how much you can accomplish with so few lines of code.  This is made possible both through the terseness of the language and the thoughtfulness of the library designers.
 
-In 160 lines of Clojure including tests, it can gather Clojure vectors, markdown files, stylesheets, and other static assets into a compiled bundle optimized for production, and serve it as well in different build configurations including a hot reloading development server.
+This app parses Clojure vectors and markdown files into html, compile an optimized bundle including stylesheets and other static assets, and serve it in different build configurations including a hot reloading development server.
 
 I've chosen to use `boot` instead of `lein`, which complicated Heroku and Travis integration somewhat but not greatly, and I'll discuss how I tackled the pitfalls.
 
