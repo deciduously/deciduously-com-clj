@@ -6,11 +6,13 @@ Is there a less disgusting way to phrase this question?
 
 As you read on you'll find out - probably and definitely.  Here we go!
 ## Intro
-I built this blog (almost) entirely in [Clojure](https://clojure.org/).  Not only that, but very very little Clojure.  The meatiest source file [web.clj](https://github.com/deciduously/deciduously-com/blob/master/src/deciduously_com/web.clj) clocks in at around 100 lines.  Granted, this is *not* a compliated website, but it's still impressive how much you can accomplish with so few lines of code.  This is made possible both through the terseness of the language and the thoughtfulness of the library designers.
+I built this blog (almost) entirely in [Clojure](https://clojure.org/).  Not only that, but very very little Clojure.  The meatiest source file [web.clj](https://github.com/deciduously/deciduously-com/blob/master/src/deciduously_com/web.clj) clocks in at around 100 lines.  Granted, this is *not* a complicated website, but it's still impressive how much you can accomplish with so few lines of code.  This is made possible both through the terseness of the language and the thoughtfulness of the library designers.
 
-According to [`loc`](https://github.com/cgag/loc)at time of writing I have 185 sloc of Markdown, 160 sloc of Clojure, 77 of CSS including externs, 70 for the Makefile, and 8 of HTML - 450 exactly.
+According to [`loc`](https://github.com/cgag/loc) at time of writing I have 185 sloc of Markdown, 160 sloc of Clojure, 77 of CSS including externs, 70 for the Makefile, and 8 of HTML - 450 exactly.
 
 If you're unfamiliar with Clojure, it would help to spend some time with Chapter 3 of Clojure for the Brave and True: [Do Things](https://www.braveclojure.com/do-things/).  It's a good crash course in the syntax - there really isn't much syntax to learn, and you really don't need a ton to understand this post/series.
+
+The book (rightly) suggests you follow along in a [REPL](https://en.wikipedia.org/wiki/Read-eval-print_loop).  My favorite quick REPL is [planck](http://planck-repl.org), but you can do it using the tools in this project by grabbing the Makefile below, running `make deps`, and running `bin/boot repl`.  This will take a while, especially the first time.
 
 To start off, the bulk of the static site engine is directly taken from this excellent 2011 [tutorial](https://cjohensen.no/building-statis-sites-in-clojure-with-stasis/) by [Christian Johansen](https://github.com/cjohansen).  I will try as much as possible to avoid overlapping except where necessary - go read the tutorial, it's fun.
 
@@ -105,9 +107,9 @@ Now you can add a dev task and a build task:
     (serve :handler `example.core/dev-handler :reload true :port 3000)
     (wait)))
 ```
-And that's that!  Four forms.  Configuring `boot` starts off quite simple.  You compose your own build pipelines with `comp` - these are very readable and act as you expect.  Because the `target` task always clobbers, you don't need to clean it.
+And that's that!  Four forms.  Configuring `boot` starts off quite simple.  You compose your own build pipelines with `comp` - these are very readable and act as you expect.
 
-Now, finally, let's make a Clojure file.  Execute `mkdir -p src/example_com/ && touch web.clj`.  Then declare the namespace:
+Now, finally, let's make a Clojure file.  Execute `mkdir -p src/example_com/ && touch web.clj`, noting the underscore in the directory in place of the dash in the project name.  Then declare the namespace:
 ```clojure
 ;; web.clj
 (ns example-com.web
