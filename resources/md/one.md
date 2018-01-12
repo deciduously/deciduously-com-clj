@@ -19,7 +19,7 @@ This post will be concerned with setting up the project, stay tuned for more!
 ### What we're dealing with
 I [built](https://github.com/deciduously/deciduously-com) this [blog](http://www.deciduously.com) (almost) entirely in [Clojure](https://clojure.org/).  Not only that, but very very little Clojure.  The meatiest source file [web.clj](https://github.com/deciduously/deciduously-com/blob/master/src/deciduously_com/web.clj) clocks in at around 100 lines.  Granted, this is *not* a complicated website, but it's still impressive how much you can accomplish with so few lines of code.  This is made possible both through the terseness of the language and the thoughtfulness of the library designers.
 
-This app parses Clojure vectors and markdown files into html, compile an optimized bundle including stylesheets and other static assets, and serve it in different build configurations including a hot reloading development server.
+This app parses Clojure vectors and markdown files into html, pre-process that html with a syntax highlighter, compile an optimized bundle including stylesheets and other static assets, and serve it in different build configurations including a hot reloading development server.
 
 I've chosen to use `boot` instead of `lein`, which complicated Heroku and Travis integration somewhat but not greatly, and I'll discuss how I tackled the pitfalls.
 
@@ -51,7 +51,7 @@ I also add `.#\n.nrepl-` to filter out emacs/cider things, you should tailor to 
 
 You're welcome to procure [boot](http://boot-clj.com) any way you like, and may want to install it globally eventually, but you can use the following Makefile to provide a `make deps` command to install boot to the project location.  The shim is very small and just loads version you specify, latest by default, for you, and reads the users maven repository.
 
-We'll use the Makefile again, so I recommend adding it to your project to follow along even if you do choose another installation route.  You can download it [here](https://gist.github.com/deciduously/3451bfc89414c56ef734ceebeeb7db14) or copy it below:]
+We'll use the Makefile again, so I recommend adding it to your project to follow along even if you do choose another installation route.  You can download it [here](https://gist.github.com/deciduously/3451bfc89414c56ef734ceebeeb7db14) or copy it below:
 ```makefile
 # Makefile
 .PHONY: help deps
@@ -81,7 +81,6 @@ Issue `touch build.boot` in the root dir of the project and open it with your fa
                  [ring/ring-core "1.6.3"]
                  [ring/ring-jetty-adapter "1.6.3"]
                  [ring/ring-devel "1.6.3"]
-                 [stasis "2.3.0"]
                  [pandeiro/boot-http "0.8.3" :scope "test"]])
 ```
 Notably the `:dependencies` vector is quoted to pass to `set-env`, unlike for `defproject`, and you use a set for :source-paths.  I'll go over library each as we use them.
@@ -110,7 +109,7 @@ Now you can add a dev task and a build task:
   "Run live development server"
   []
   (comp
-    (serve :handler `example.core/dev-handler :reload true :port 3000)
+    (serve :handler `example-com.web/dev-handler :reload true :port 3000)
     (wait)))
 ```
 And that's that!  Four forms.  Configuring `boot` starts off quite simple.  You compose your own build pipelines with `comp` - these are very readable and act as you expect.
@@ -128,11 +127,13 @@ Then add a very basic [Ring handler](https://github.com/ring-clojure/ring/wiki/C
 (defn dev-handler [req]
   {:status 200
    :headers {"Content-Type" "text/plain"}
-   :body (html [:h1 "Hello, world!"]
+   :body (html [:h1 "Hello, world!"][:br]
                [:p (str "IP: " (:remote-addrs req))])})
 ```
 I'm deliberately reserving `core` for the `server.jar` main function - you can name the namespace whatever you like.
 
 That's it!  Run `boot dev -h`, and then `boot dev` will run a server on `localhost:3000`.  If you point your brower there, you should see:
 # Hello, world!
+localhost:3000
+
 Congratulations!  You built a webserver.  Go make a cup of tea and come back next time to export html and deploy your very own jar!

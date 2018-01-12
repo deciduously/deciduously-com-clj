@@ -57,7 +57,7 @@
    [:body
     [:div.body page [:br]
      [:footer.footer
-      (str "Copyright 2018 ")
+      (str "&#169; 2018 ")
       (http-link "/" domain) [:br]
       (http-link github-link "source")]]]))
 
