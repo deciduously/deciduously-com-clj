@@ -15,7 +15,7 @@ I will try to be in depth where this project differs and brief where they don't,
 
 Please tell me at [contact@deciduously.com](contact@deciduously.com) if something needs work!
 
-This post will be concerned with setting up the project, stay tuned for more.  I *highly* recommend typing everything yourself if you'd liek to follow along, but there is an example [repo](https://github.com/deciduously/example-com) you can clone instead.
+This post will be concerned with setting up the project, stay tuned for more.  I *highly* recommend typing everything yourself if you'd like to follow along, but there is an example [repo](https://github.com/deciduously/example-com) you can clone instead.
 ### What we're dealing with
 I [built](https://github.com/deciduously/deciduously-com) this [blog](http://www.deciduously.com) (almost) entirely in [Clojure](https://clojure.org/).  Not only that, but very very little Clojure.  The meatiest source file [web.clj](https://github.com/deciduously/deciduously-com/blob/master/src/deciduously_com/web.clj) clocks in at around 100 lines.  Granted, this is *not* a complicated website, but it's still impressive how much you can accomplish with so few lines of code.  This is made possible both through the terseness of the language and the thoughtfulness of the library designers.
 

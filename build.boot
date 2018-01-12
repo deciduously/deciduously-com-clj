@@ -8,6 +8,7 @@
                  [hiccup "1.0.5" :scope "test"]
                  [markdown-clj "1.0.1" :scope "test"]
                  [midje "1.9.1" :scope "test" :exclusions [org.clojure/clojure]]
+                 [onetom/boot-lein-generate "0.1.3" :scope "test"]
                  [optimus "0.20.1"]
                  [ring/ring-core "1.6.3"]
                  [ring/ring-jetty-adapter "1.6.3"]
@@ -27,10 +28,15 @@
         :file "server.jar"}
   sift {:include #{#"server.jar"}})
 
-(require '[deciduously-com.web :refer [export port target-dir version]]
-         '[deciduously-com.test]
+(require 'boot.lein
+         '[deciduously-com.web :refer [export port target-dir version]]
+         'deciduously-com.test
          '[pandeiro.boot-http :refer [serve]]
          '[zilti.boot-midje :refer [midje]])
+
+(defn version-fix [f] f) ; no-op while i figure this out
+
+(version-fix (boot.lein/generate))
 
 (deftask dev
   "Run live development server"
@@ -42,19 +48,25 @@
 (deftask dist
   "Export static site"
   []
-  (do (println "***** Bundling and exporting...") (export target-dir)))
+  (do
+    (println "Bundling and exporting website...")
+    (export target-dir)))
 
 (deftask prod
   "Export and serve static site"
   []
-  (do (dist) (comp (serve :handler 'deciduously-com.web/prod-handler :port port) (wait))))
+  (do
+    (dist)
+    (comp
+     (serve :handler 'deciduously-com.web/prod-handler :port port)
+     (wait))))
 
 (deftask build
   "Exports the static site and builds a production uberjar"
   []
   (do
     (dist)
-    (println "***** Compiling jar")
+    (println "Building server...")
     (comp
       (aot)
       (pom :version version)

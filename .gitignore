@@ -14,3 +14,4 @@ deciduously-com/
 .boot-chk
 .keys
 bin/
+project.clj
