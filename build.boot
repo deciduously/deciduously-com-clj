@@ -28,7 +28,7 @@
   sift {:include #{#"server.jar"}})
 
 (require '[deciduously-com.web :refer [export port target-dir version]]
-         '[deciduously-com.test]
+         'deciduously-com.test
          '[pandeiro.boot-http :refer [serve]]
          '[zilti.boot-midje :refer [midje]])
 
@@ -42,19 +42,25 @@
 (deftask dist
   "Export static site"
   []
-  (do (println "***** Bundling and exporting...") (export target-dir)))
+  (do
+    (println "Bundling and exporting website...")
+    (export target-dir)))
 
 (deftask prod
   "Export and serve static site"
   []
-  (do (dist) (comp (serve :handler 'deciduously-com.web/prod-handler :port port) (wait))))
+  (do
+    (dist)
+    (comp
+     (serve :handler 'deciduously-com.web/prod-handler :port port)
+     (wait))))
 
 (deftask build
   "Exports the static site and builds a production uberjar"
   []
   (do
     (dist)
-    (println "***** Compiling jar")
+    (println "Building server...")
     (comp
       (aot)
       (pom :version version)

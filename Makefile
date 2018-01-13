@@ -17,14 +17,13 @@ help:
 	@echo "Usage: make {clean|deps|help|install|release|test}" 1>&2 && false
 
 clean:
-	(rm -Rfv $(project) $(release) bin/)
-	(rm -fv $(server) .boot-chk .installed .tested .released .built .deps)
+	(rm -Rfv $(project) $(release) target/ $(DIST) bin/)
+	(rm -fv $(server) .installed .tested .released .built .deps)
 
 bin/boot:
 	(mkdir -p bin/                                                                              && \
 	curl -fsSLo bin/boot https://github.com/boot-clj/boot-bin/releases/download/latest/boot.sh  && \
-	chmod 755 bin/boot                                                                          && \
-	date > .boot-chk)
+	chmod 755 bin/boot)
 
 $(server): bin/boot
 	bin/boot build && \
