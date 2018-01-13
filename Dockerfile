@@ -5,16 +5,15 @@ CMD ["/sbin/my_init"]
 COPY . /usr/src/deciduously-com
 WORKDIR /usr/src/deciduously-com
 
-RUN echo 80 > /etc/container_environment/PORT
-RUN echo prod > /etc/container_environment/BUILD
-RUN echo dist/ > /etc/container_environment/DIST
-RUN echo yes > /etc/container_environment/BOOT_AS_ROOT
+ENV PORT 80
+ENV BUILD prod
+ENV DIST dist/
 
 RUN apt-get update
-RUN apt-get install -y build-essential curl default-jre
-RUN make install
+RUN apt-get install -y make curl default-jre
+RUN BOOT_AS_ROOT=yes make install
+RUN apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 EXPOSE 80
 
 CMD ["java", "-jar", "target/server.jar"]
 
-RUN apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
