@@ -17,7 +17,7 @@ help:
 	@echo "Usage: make {clean|deps|help|install|release|test}" 1>&2 && false
 
 clean:
-	(rm -Rfv $(project) $(release) bin/)
+	(rm -Rfv $(project) $(release) target/ $(DIST) bin/)
 	(rm -fv $(server) .boot-chk .installed .tested .released .built .deps)
 
 bin/boot:
