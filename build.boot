@@ -8,7 +8,6 @@
                  [hiccup "1.0.5" :scope "test"]
                  [markdown-clj "1.0.1" :scope "test"]
                  [midje "1.9.1" :scope "test" :exclusions [org.clojure/clojure]]
-                 [onetom/boot-lein-generate "0.1.3" :scope "test"]
                  [optimus "0.20.1"]
                  [ring/ring-core "1.6.3"]
                  [ring/ring-jetty-adapter "1.6.3"]
@@ -28,15 +27,10 @@
         :file "server.jar"}
   sift {:include #{#"server.jar"}})
 
-(require 'boot.lein
-         '[deciduously-com.web :refer [export port target-dir version]]
+(require '[deciduously-com.web :refer [export port target-dir version]]
          'deciduously-com.test
          '[pandeiro.boot-http :refer [serve]]
          '[zilti.boot-midje :refer [midje]])
-
-(defn version-fix [f] f) ; no-op while i figure this out
-
-(version-fix (boot.lein/generate))
 
 (deftask dev
   "Run live development server"

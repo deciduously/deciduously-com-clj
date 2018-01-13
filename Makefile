@@ -25,7 +25,7 @@ bin/boot:
 	curl -fsSLo bin/boot https://github.com/boot-clj/boot-bin/releases/download/latest/boot.sh  && \
 	chmod 755 bin/boot)
 
-$(server): boot.properties
+$(server): bin/boot
 	bin/boot build && \
 	date > .built
 
