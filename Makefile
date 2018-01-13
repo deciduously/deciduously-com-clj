@@ -18,15 +18,14 @@ help:
 
 clean:
 	(rm -Rfv $(project) $(release) target/ $(DIST) bin/)
-	(rm -fv $(server) .boot-chk .installed .tested .released .built .deps)
+	(rm -fv $(server) .installed .tested .released .built .deps)
 
 bin/boot:
 	(mkdir -p bin/                                                                              && \
 	curl -fsSLo bin/boot https://github.com/boot-clj/boot-bin/releases/download/latest/boot.sh  && \
-	chmod 755 bin/boot                                                                          && \
-	date > .boot-chk)
+	chmod 755 bin/boot)
 
-$(server): bin/boot
+$(server): boot.properties
 	bin/boot build && \
 	date > .built
 
