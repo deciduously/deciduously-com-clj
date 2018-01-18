@@ -27,7 +27,7 @@ If you're unfamiliar with Gentoo, how did you find this?  Anyway, Gentoo's shtic
 
 To me, though, the appeal of Gentoo isn't so much speed but flexibility.  The package manager `portage` is far and away the best system I've ever used, and once you get used to managing USE flags, it's hard to go back.  The ability to toggle on and off features across your whole system and to recompile everything to that it's all linked together nicely and built against iself correctly is beautiful - it's more a meta-distribution that anything.  Portage is a tool that lets you build your own distros any way you like.  Some of the features, slots in particular, I'm reasonably convinced are ancient arcane magic.  I'm told it's a BSD-style `ports`-like system, but I've used BSD for a grand total of 20 minutes so can't personally attest to that.  If that's the case, though, I like their style.
 
-I like cutting cruft, and it's especially important in space-constrained situations like this one - 2 GB of RAM is a ton for hardware this size and price but still limited in terms of what it can handle.  The only cost for this flexibility is time - and what a negligible cost.  I use Gentoo as my daily driver as well, and yes, the installation takes a while but afterwards it's just like using anything else.  I run my `emerge --sync && emerge -avuDNt @world` at night, and wake up to newly built stuff.  Or occasionally build errors, but honestly even unstable (`~`) breaks very infrequently. 
+I like cutting cruft, and it's especially important in space-constrained situations like this one - 2 GB of RAM is a ton for hardware this size and price but still limited in terms of what it can handle.  The only cost for this flexibility is time - and what a negligible cost.  I use Gentoo as my daily driver as well, and yes, the installation takes a while but afterwards it's just like using anything else.  I run my `emerge --sync && emerge -avuDNt @world` at night, and wake up to newly built stuff.  I've also set my `PORTAGE_NICENESS` low, so if I do need to work while building it doens't slow me down too much.  Or occasionally build errors, but honestly even unstable (`~`) breaks very infrequently. 
 
 Well, lots of reasons, probably, but I'm using the Everest defence - I can.  It's an option available to me.  So buckle up, nerds.
 
@@ -35,3 +35,4 @@ Well, lots of reasons, probably, but I'm using the Everest defence - I can.  It'
 crossdev
 
 -binfmt_misc
+Had to create a conf file before the thing would even start up, Gentoo docs didnt say that - maybe make a wiki edit?

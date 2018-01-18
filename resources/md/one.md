@@ -148,6 +148,6 @@ Once it finishes, it will output `Started Jetty on http://localhost:3000`.  Poin
 # Hello, world!
 If not, double check all your syntax - you can compare against this [tagged commit](https://github.com/deciduously/example-com/releases/tag/post1).  The easiest mistake to make is switching that dash for an underscore in the project source folder.
 
-Congratulations!  You built a webserver.  Make an edit to the Clojure file and reload your browser, and verify that the changes are recompiled and served on the fly.  Use `C-c` to stop the server and go make a cup of tea.  This is a great time to commit your work: `git commit -m "Initial commit".
+Congratulations!  You built a webserver.  Make an edit to the Clojure file and reload your browser, and verify that the changes are recompiled and served on the fly.  Use `C-c` to stop the server and go make a cup of tea.  This is a great time to commit your work: `git commit -m "Initial commit"`.
 
 Using `boot` is the biggest change from the aforementioned tutorial - Next time, I'll cover the differences between by codebase and his, as well as discuss serving an exported static site and hooking up continuous integration.
