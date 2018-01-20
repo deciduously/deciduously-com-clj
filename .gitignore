@@ -15,3 +15,4 @@ deciduously-com/
 .keys
 bin/
 project.clj
+*.zip

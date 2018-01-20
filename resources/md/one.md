@@ -21,7 +21,7 @@ Please tell me at [contact@deciduously.com](contact@deciduously.com) if somethin
 
 This post will be concerned with setting up the project, stay tuned for more.  I *highly* recommend typing everything yourself if you'd like to follow along, but there is an example [repo](https://github.com/deciduously/example-com) you can clone instead.
 ### What we're dealing with
-I [built](https://github.com/deciduously/deciduously-com) this [blog](http://www.deciduously.com) (almost) entirely in [Clojure](https://clojure.org/).  Not only that, but very very little Clojure.  The meatiest source file [web.clj](https://github.com/deciduously/deciduously-com/blob/master/src/deciduously_com/web.clj) clocks in at around 100 lines.  Granted, this is *not* a complicated website, but it's still impressive how much you can accomplish with so few lines of code.  This is made possible both through the terseness of the language and the thoughtfulness of the library designers.
+I [built](https://github.com/deciduously/deciduously-com) this [blog](http://deciduously.com) (almost) entirely in [Clojure](https://clojure.org/).  Not only that, but very very little Clojure.  The meatiest source file [web.clj](https://github.com/deciduously/deciduously-com/blob/master/src/deciduously_com/web.clj) clocks in at around 100 lines.  Granted, this is *not* a complicated website, but it's still impressive how much you can accomplish with so few lines of code.  This is made possible both through the terseness of the language and the thoughtfulness of the library designers.
 
 This app parses Clojure vectors and markdown files into html, pre-processes that html with a syntax highlighter, compiles an optimized bundle including stylesheets and other static assets, and serves it in different build configurations including a hot reloading development server.
 
@@ -148,6 +148,6 @@ Once it finishes, it will output `Started Jetty on http://localhost:3000`.  Poin
 # Hello, world!
 If not, double check all your syntax - you can compare against this [tagged commit](https://github.com/deciduously/example-com/releases/tag/post1).  The easiest mistake to make is switching that dash for an underscore in the project source folder.
 
-Congratulations!  You built a webserver.  Make an edit to the Clojure file and reload your browser, and verify that the changes are recompiled and served on the fly.  Use `C-c` to stop the server and go make a cup of tea.  This is a great time to commit your work: `git commit -m "Initial commit".
+Congratulations!  You built a webserver.  Make an edit to the Clojure file and reload your browser, and verify that the changes are recompiled and served on the fly.  Use `C-c` to stop the server and go make a cup of tea.  This is a great time to commit your work: `git commit -m "Initial commit"`.
 
 Using `boot` is the biggest change from the aforementioned tutorial - Next time, I'll cover the differences between by codebase and his, as well as discuss serving an exported static site and hooking up continuous integration.
