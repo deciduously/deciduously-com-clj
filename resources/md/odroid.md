@@ -36,3 +36,4 @@ crossdev
 
 -binfmt_misc
 Had to create a conf file before the thing would even start up, Gentoo docs didnt say that - maybe make a wiki edit?
+- you should build packages when you run emerge and rsync to odroid nightly
