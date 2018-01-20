@@ -52,4 +52,4 @@ release: .released
 	(export BOOT_VERSION=2.7.2 && bin/boot midje)
 	date > .tested
 
-test: .tested
+test: clean .tested
