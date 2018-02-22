@@ -16,3 +16,4 @@ deciduously-com/
 bin/
 project.clj
 *.zip
+main.out/
