@@ -3,8 +3,8 @@
              [midje.sweet :refer :all]
              [net.cgrand.enlive-html :as enlive]))
 
-(def prod? (= "prod" build))
-(def pages (if prod? (get-exported-pages target-dir) (get-pages)))
+(def prod? (= "prod" (:build config)))
+(def pages (if prod? (get-exported-pages (:target config)) (get-pages)))
 (def handler (if prod? prod-handler dev-handler))
 
 (fact "All pages respond with 200 OK"

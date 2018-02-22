@@ -27,10 +27,13 @@
         :file "server.jar"}
   sift {:include #{#"server.jar"}})
 
-(require '[deciduously-com.web :refer [export port target-dir version]]
+(require '[deciduously-com.web :refer [export config version]]
          'deciduously-com.test
          '[pandeiro.boot-http :refer [serve]]
          '[zilti.boot-midje :refer [midje]])
+
+(def port (:port config))
+(def target-dir (:target config))
 
 (deftask dev
   "Run live development server"

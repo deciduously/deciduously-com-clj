@@ -20,9 +20,13 @@
 
 (def system-env #(or (System/getenv %) %2))
 
-(def port (Integer/valueOf (system-env "PORT" "3000")))
-(def target-dir (system-env "DIST" "dist/"))
-(def build (system-env "BUILD" "dev"))
+(def config {:port (Integer/valueOf (system-env "PORT" "3000"))
+             :target (system-env "DIST" "dist/")
+             :build (system-env "BUILD" "dev")})
+
+;(def port (Integer/valueOf (system-env "PORT" "3000")))
+;(def target-dir (system-env "DIST" "dist/"))
+;(def build (system-env "BUILD" "dev"))
 
 (def version (-> "version.properties"
                  slurp
@@ -43,7 +47,7 @@
 
 (def github-link
   (let [base "https://github.com/deciduously/deciduously-com"]
-    (str base (if (= "prod" build) (str "/releases/tag/" version) "/tree/master"))))
+    (str base (if (= "prod" (:build config)) (str "/releases/tag/" version) "/tree/master"))))
 
 (defn layout-page [request page]
   (html5
@@ -92,7 +96,7 @@
       (optimus/wrap get-assets optimizations/none serve-live-assets)))
 
 (def prod-handler
-  (-> (s/serve-pages (get-exported-pages target-dir))
+  (-> (s/serve-pages (get-exported-pages (:target config)))
       wrap-content-type
       wrap-not-modified
       wrap-gzip))
