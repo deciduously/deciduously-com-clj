@@ -16,6 +16,8 @@
             [ring.middleware.reload :refer [wrap-reload]]
             [stasis.core :as s]))
 
+;; Configuration
+
 (def domain "deciduously")
 
 (def system-env #(or (System/getenv %) %2))
@@ -24,24 +26,29 @@
              :target (system-env "DIST" "dist/")
              :build (system-env "BUILD" "dev")})
 
-;(def port (Integer/valueOf (system-env "PORT" "3000")))
-;(def target-dir (system-env "DIST" "dist/"))
-;(def build (system-env "BUILD" "dev"))
-
 (def version (-> "version.properties"
                  slurp
                  (str/split #"=")
                  second))
 
-(defn get-assets []
+;; Assets
+
+(defn get-assets
+  "Define Optimus assets"
+  []
   (concat
    (assets/load-bundle "public" "styles.css" ["/styles/main.css"])
    (assets/load-assets "public" ["/img/favicon.ico"])))
 
-(defn get-exported-pages [target]
+(defn get-exported-pages
+  "Stasis get-pages for pre-exported material"
+  [target]
   (s/slurp-directory target #".+\.(html|js|css)$"))
 
+;; Utility
+
 (defn http-link
+  "http-link helper"
   ([url] [:a {:href url} url])
   ([url text] [:a {:href url} text]))
 
@@ -49,7 +56,11 @@
   (let [base "https://github.com/deciduously/deciduously-com"]
     (str base (if (= "prod" (:build config)) (str "/releases/tag/" version) "/tree/master"))))
 
-(defn layout-page [request page]
+;; Main skeleton
+
+(defn layout-page
+  "Page skeleton"
+  [request page]
   (html5
    [:head
     [:meta {:charset "utf-8"}]
@@ -65,31 +76,49 @@
       (http-link "/" domain) [:br]
       (http-link github-link "source")]]]))
 
-(defn partial-pages [pages]
+;; Stasis
+
+(defn partial-pages
+  "Build Stasis-style map of paths to pages"
+  [pages]
   (zipmap (keys pages)
           (map #(fn [req] (layout-page req %)) (vals pages))))
 
- ; TODO run edn through hiccup instead of just having raw html
+;; TODO run edn through hiccup instead of just having raw html
 
-(defn markdown-pages [pages]
+(defn markdown-pages
+  "Swap out the markdown files for parsed pages"
+  [pages]
   (zipmap (map #(str (str/replace % #"\.md$" "") "/") (keys pages))
           (map #(fn [req] (layout-page req (md-to-html-string %))) (vals pages))))
 
-(defn get-raw-pages []
+(defn get-raw-pages
+  "Pull in the raw files, Statis-style"
+  []
   (s/merge-page-sources
    {:public (s/slurp-directory "resources/public/" #"\.(html|js|css)$") ;TODO prevent non-used css files from getting in the bundle
     :partials (partial-pages (s/slurp-directory "resources/partials/" #"\.html$"))
     :markdown (markdown-pages (s/slurp-directory "resources/md/" #"\.md$"))}))
 
-(defn prepare-page [page req]
+;; Highlight
+
+(defn prepare-page
+  "Highlight a page where applicable"
+  [page req]
   (-> (if (string? page) page (page req))
       highlight-code-blocks))
 
-(defn prepare-pages [pages]
+(defn prepare-pages
+  "Highlight all the pages"
+  [pages]
   (zipmap (keys pages)
           (map #(partial prepare-page %) (vals pages))))
 
-(defn get-pages [] (prepare-pages (get-raw-pages)))
+(defn get-pages
+  "Run all the raw pages through the highlighter"
+  [] (prepare-pages (get-raw-pages)))
+
+;; Ring handlers
 
 (def dev-handler
   (-> (s/serve-pages (get-pages))
@@ -100,6 +129,8 @@
       wrap-content-type
       wrap-not-modified
       wrap-gzip))
+
+;; Boot task
 
 (defn export [target-dir]
   (let [assets (optimizations/all (get-assets) {})]
