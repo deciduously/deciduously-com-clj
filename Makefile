@@ -26,7 +26,7 @@ bin/boot:
 	curl -fsSLo bin/boot https://github.com/boot-clj/boot-bin/releases/download/latest/boot.sh  && \
 	chmod 755 bin/boot)
 
-$(server): deps
+$(server):
 	boot build
 
 deps: bin/boot
