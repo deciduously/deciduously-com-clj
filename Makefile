@@ -1,7 +1,7 @@
 .PHONY: help clean deps install release test
 
 SHELL       := /bin/bash
-export PATH := bin:$(PATH)
+export PATH := ./bin:$(PATH)
 
 project     = deciduously-com
 verfile     = version.properties

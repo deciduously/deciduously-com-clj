@@ -92,6 +92,7 @@
   (zipmap (map #(str (str/replace % #"\.md$" "") "/") (keys pages))
           (map #(fn [req] (layout-page req (md-to-html-string %))) (vals pages))))
 
+; Add the apps here, foo'
 (defn get-raw-pages
   "Pull in the raw files, Statis-style"
   []
