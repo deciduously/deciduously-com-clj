@@ -50,7 +50,7 @@ install: .installed
 release: .released
 
 .tested: .released
-	(export BOOT_VERSION=2.7.2 && bin/boot midje)
+	boot midje     && \
 	date > .tested
 
 test: clean .tested
