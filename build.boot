@@ -27,7 +27,7 @@
         :file "server.jar"}
   sift {:include #{#"server.jar"}})
 
-(require '[deciduously-com.web :refer [export config version]]
+(require '[deciduously-com.web :refer [export config]]
          'deciduously-com.test
          '[pandeiro.boot-http :refer [serve]]
          '[zilti.boot-midje :refer [midje]])
@@ -66,7 +66,7 @@
     (println "Building server...")
     (comp
       (aot)
-      (pom :version version)
+      (pom :version (:version config))
       (uber)
       (jar)
       (sift)

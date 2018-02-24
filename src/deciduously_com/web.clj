@@ -24,12 +24,11 @@
 
 (def config {:port (Integer/valueOf (system-env "PORT" "3000"))
              :target (system-env "DIST" "dist/")
-             :build (system-env "BUILD" "dev")})
-
-(def version (-> "version.properties"
-                 slurp
-                 (str/split #"=")
-                 second))
+             :build (system-env "BUILD" "dev")
+             :version (-> "version.properties"
+                          slurp
+                          (str/split #"=")
+                          second)})
 
 ;; Assets
 
@@ -54,7 +53,7 @@
 
 (def github-link
   (let [base "https://github.com/deciduously/deciduously-com"]
-    (str base (if (= "prod" (:build config)) (str "/releases/tag/" version) "/tree/master"))))
+    (str base (if (= "prod" (:build config)) (str "/releases/tag/" (:version config)) "/tree/master"))))
 
 ;; Main skeleton
 
