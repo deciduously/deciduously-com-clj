@@ -37,7 +37,7 @@ cd deciduously-com/ && make install
 This takes about four minutes to run, longer the first time as boot gathers
 dependencies - go put on a nice hot cup of your
 favorite kind of tea.  The resulting
-folder can then be used as described in Usage at `dist/`. `make release` will produce a compressed archive at `release/deciduously-com-0.1.3-bundle.tar.xz`.  Run `make help` for a list of all available make targets.
+folder can then be used as described in "Run" at `dist/`. `make release` will produce a compressed archive at `release/deciduously-com-0.1.3-bundle.tar.xz`.  Run `make help` for a list of all available make targets.
 #### Hack
 `boot -h` for the full list of available tasks.  I define the following
 in
@@ -57,7 +57,7 @@ Use `make test` to run `make release` and then `boot midje`.  Check [Travis](htt
 * [**markdown-clj**](https://github.com/yogthos/markdown-clj) - Markdown parser
 * [**Midje**](https://github.com/marick/midje) - Test framework
 * [**boot-midje**](https://bitbucket.org/zilti/boot-midje) - Boot plugin for midje
-* [**Ring**](https://ring-clojure/ring) - HTTP server abstraction
+* [**Ring**](https://github.com/ring-clojure/ring) - HTTP server abstraction
 * [**Optimus**](https://github.com/magnars/optimus) - Ring middleware for frontend performance optimization
 * [**Stasis**](https://github.com/magnars/stasis) - Static website toolset
 * [**boot-http**](https://github.com/pandeiro/boot-http) - Boot http server plugin
