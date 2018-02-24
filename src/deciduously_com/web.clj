@@ -78,7 +78,7 @@
 ;; Stasis
 
 (defn partial-pages
-  "Build Stasis-style map of paths to pages"
+  "Add partials to page skeleton, swapping in place"
   [pages]
   (zipmap (keys pages)
           (map #(fn [req] (layout-page req %)) (vals pages))))
@@ -86,19 +86,19 @@
 ;; TODO run edn through hiccup instead of just having raw html
 
 (defn markdown-pages
-  "Swap out the markdown files for parsed pages"
+  "Parse markdown files, swapping in place"
   [pages]
   (zipmap (map #(str (str/replace % #"\.md$" "") "/") (keys pages))
           (map #(fn [req] (layout-page req (md-to-html-string %))) (vals pages))))
 
-; Add the apps here, foo'
 (defn get-raw-pages
   "Pull in the raw files, Statis-style"
   []
   (s/merge-page-sources
    {:public (s/slurp-directory "resources/public/" #"\.(html|js|css)$") ;TODO prevent non-used css files from getting in the bundle
     :partials (partial-pages (s/slurp-directory "resources/partials/" #"\.html$"))
-    :markdown (markdown-pages (s/slurp-directory "resources/md/" #"\.md$"))}))
+    :markdown (markdown-pages (s/slurp-directory "resources/md/" #"\.md$"))
+    :apps (s/slurp-directory "resources/apps/" #"\.(html|js|css)$")}))
 
 ;; Highlight
 
