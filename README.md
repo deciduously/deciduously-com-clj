@@ -1,5 +1,5 @@
 # deciduously.com
-[![GithubVersion](https://img.shields.io/badge/version-0.1.3-red.svg?style=flat-square&color=brightgreen)](https://github.com/deciduously/deciduously-com/tree/v0.1.3)
+[![GithubVersion](https://img.shields.io/badge/version-0.1.4-red.svg?style=flat-square&color=brightgreen)](https://github.com/deciduously/deciduously-com/tree/v0.1.4)
 [![Heroku](https://heroku-badge.herokuapp.com/?app=polar-refuge-87230&style=flat)](http://www.deciduously.com)
 [![GitHub license](https://img.shields.io/github/license/deciduously/deciduously-com.svg?style=flat-square)](https://github.com/deciduously/deciduously-com/blob/release/LICENSE)
 [![Build Status](https://travis-ci.org/deciduously/deciduously-com.svg?branch=release)](https://travis-ci.org/deciduously/deciduously-com)
@@ -9,11 +9,11 @@
 3. [Libraries](#libraries)
 4. [Acknowledgements](#acknowledgements)
 ### Run
-To download and run the [latest release](https://github.com/deciduously/deciduously-com/releases/tag/v0.1.3) make sure you have `java` available and execute the following:
+To download and run the [latest release](https://github.com/deciduously/deciduously-com/releases/tag/v0.1.4) make sure you have `java` available and execute the following:
 ```shell
 cd ~
-wget https://github.com/deciduously/deciduously-com/releases/download/v0.1.3/deciduously-com-0.1.3-bundle.bin.tar.xz
-tar xvf deciduously-com-0.1.3.bin.tar.xz
+wget https://github.com/deciduously/deciduously-com/releases/download/v0.1.4/deciduously-com-0.1.4-bundle.bin.tar.xz
+tar xvf deciduously-com-0.1.4.bin.tar.xz
 cd deciduously-com/ && java -jar target/server.jar
 ```
 `server.jar` reads the following environment variables, given with their
@@ -38,7 +38,7 @@ cd deciduously-com/ && make install
 This takes about four minutes to run, longer the first time as boot gathers
 dependencies - go put on a nice hot cup of your
 favorite kind of tea.  The resulting
-folder can then be used as described in Usage at `dist/`. `make release` will produce a compressed archive at `release/deciduously-com-0.1.3-bundle.tar.xz`.  Run `make help` for a list of all available make targets.
+folder can then be used as described in Usage at `dist/`. `make release` will produce a compressed archive at `release/deciduously-com-0.1.4-bundle.tar.xz`.  Run `make help` for a list of all available make targets.
 #### Hack
 `boot -h` for the full list of available tasks.  I define the following
 in
